@@ -1,0 +1,4 @@
+preliminaries % load uncertain plant
+
+s = tf('s');
+Ld = wc/s; %desired loopshape
