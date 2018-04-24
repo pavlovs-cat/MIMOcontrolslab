@@ -7,9 +7,9 @@
  *
  * Code generation for model "MLC_Aero_Simulink2016a".
  *
- * Model version              : 1.101
+ * Model version              : 1.102
  * Simulink Coder version : 8.10 (R2016a) 10-Feb-2016
- * C source code generated on : Tue Apr 24 11:56:30 2018
+ * C source code generated on : Tue Apr 24 12:20:47 2018
  *
  * Target selection: quarc_win64.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -62,7 +62,7 @@ static const char_T * rtDataTypeNames[] = {
 
 /* data type transitions for block I/O structure */
 static DataTypeTransition rtBTransitions[] = {
-  { (char_T *)(&MLC_Aero_Simulink2016a_B.Countstorads[0]), 0, 0, 15 }
+  { (char_T *)(&MLC_Aero_Simulink2016a_B.PitchReference), 0, 0, 17 }
   ,
 
   { (char_T *)(&MLC_Aero_Simulink2016a_DW.UnitDelay_DSTATE), 0, 0, 16 },
@@ -71,7 +71,7 @@ static DataTypeTransition rtBTransitions[] = {
 
   { (char_T *)(&MLC_Aero_Simulink2016a_DW.HILReadTimebase_Task), 15, 0, 1 },
 
-  { (char_T *)(&MLC_Aero_Simulink2016a_DW.HILWrite_PWORK), 11, 0, 4 },
+  { (char_T *)(&MLC_Aero_Simulink2016a_DW.HILWrite_PWORK), 11, 0, 7 },
 
   { (char_T *)(&MLC_Aero_Simulink2016a_DW.HILInitialize_ClockModes), 6, 0, 15 },
 

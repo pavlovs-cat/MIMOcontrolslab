@@ -7,9 +7,9 @@
  *
  * Code generation for model "MLC_Aero_Simulink2016a".
  *
- * Model version              : 1.101
+ * Model version              : 1.102
  * Simulink Coder version : 8.10 (R2016a) 10-Feb-2016
- * C source code generated on : Tue Apr 24 11:56:30 2018
+ * C source code generated on : Tue Apr 24 12:20:47 2018
  *
  * Target selection: quarc_win64.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -168,7 +168,7 @@ P_MLC_Aero_Simulink2016a_T MLC_Aero_Simulink2016a_P = {
   0.78539816339744828,                 /* Expression: pi/4
                                         * Referenced by: '<Root>/Yaw Reference'
                                         */
-  0.5,                                 /* Expression: 0.5
+  0.079577471545947673,                /* Computed Parameter: YawReference_Frequency
                                         * Referenced by: '<Root>/Yaw Reference'
                                         */
 

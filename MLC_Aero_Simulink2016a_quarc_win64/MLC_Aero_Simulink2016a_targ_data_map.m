@@ -630,56 +630,64 @@
     ;%
     ;% Auto data (MLC_Aero_Simulink2016a_B)
     ;%
-      section.nData     = 12;
-      section.data(12)  = dumData; %prealloc
+      section.nData     = 14;
+      section.data(14)  = dumData; %prealloc
       
-	  ;% MLC_Aero_Simulink2016a_B.Countstorads
+	  ;% MLC_Aero_Simulink2016a_B.PitchReference
 	  section.data(1).logicalSrcIdx = 0;
 	  section.data(1).dtTransOffset = 0;
 	
+	  ;% MLC_Aero_Simulink2016a_B.YawReference
+	  section.data(2).logicalSrcIdx = 1;
+	  section.data(2).dtTransOffset = 1;
+	
+	  ;% MLC_Aero_Simulink2016a_B.Countstorads
+	  section.data(3).logicalSrcIdx = 2;
+	  section.data(3).dtTransOffset = 2;
+	
 	  ;% MLC_Aero_Simulink2016a_B.Sum
-	  section.data(2).logicalSrcIdx = 2;
-	  section.data(2).dtTransOffset = 2;
+	  section.data(4).logicalSrcIdx = 4;
+	  section.data(4).dtTransOffset = 4;
 	
 	  ;% MLC_Aero_Simulink2016a_B.Sum_a
-	  section.data(3).logicalSrcIdx = 3;
-	  section.data(3).dtTransOffset = 3;
+	  section.data(5).logicalSrcIdx = 5;
+	  section.data(5).dtTransOffset = 5;
 	
 	  ;% MLC_Aero_Simulink2016a_B.Sum1
-	  section.data(4).logicalSrcIdx = 4;
-	  section.data(4).dtTransOffset = 5;
-	
-	  ;% MLC_Aero_Simulink2016a_B.Sum2
-	  section.data(5).logicalSrcIdx = 5;
-	  section.data(5).dtTransOffset = 6;
-	
-	  ;% MLC_Aero_Simulink2016a_B.MotorEnable
 	  section.data(6).logicalSrcIdx = 6;
 	  section.data(6).dtTransOffset = 7;
 	
-	  ;% MLC_Aero_Simulink2016a_B.Internal
+	  ;% MLC_Aero_Simulink2016a_B.Sum2
 	  section.data(7).logicalSrcIdx = 7;
-	  section.data(7).dtTransOffset = 9;
+	  section.data(7).dtTransOffset = 8;
 	
-	  ;% MLC_Aero_Simulink2016a_B.Internal_o
+	  ;% MLC_Aero_Simulink2016a_B.MotorEnable
 	  section.data(8).logicalSrcIdx = 8;
-	  section.data(8).dtTransOffset = 10;
+	  section.data(8).dtTransOffset = 9;
 	
-	  ;% MLC_Aero_Simulink2016a_B.Stepend_time
+	  ;% MLC_Aero_Simulink2016a_B.Internal
 	  section.data(9).logicalSrcIdx = 9;
 	  section.data(9).dtTransOffset = 11;
 	
-	  ;% MLC_Aero_Simulink2016a_B.Count
+	  ;% MLC_Aero_Simulink2016a_B.Internal_o
 	  section.data(10).logicalSrcIdx = 10;
 	  section.data(10).dtTransOffset = 12;
 	
-	  ;% MLC_Aero_Simulink2016a_B.Sum_b
+	  ;% MLC_Aero_Simulink2016a_B.Stepend_time
 	  section.data(11).logicalSrcIdx = 11;
 	  section.data(11).dtTransOffset = 13;
 	
-	  ;% MLC_Aero_Simulink2016a_B.div
+	  ;% MLC_Aero_Simulink2016a_B.Count
 	  section.data(12).logicalSrcIdx = 12;
 	  section.data(12).dtTransOffset = 14;
+	
+	  ;% MLC_Aero_Simulink2016a_B.Sum_b
+	  section.data(13).logicalSrcIdx = 13;
+	  section.data(13).dtTransOffset = 15;
+	
+	  ;% MLC_Aero_Simulink2016a_B.div
+	  section.data(14).logicalSrcIdx = 14;
+	  section.data(14).dtTransOffset = 16;
 	
       nTotData = nTotData + section.nData;
       sigMap.sections(1) = section;
@@ -787,8 +795,8 @@
       dworkMap.sections(3) = section;
       clear section
       
-      section.nData     = 4;
-      section.data(4)  = dumData; %prealloc
+      section.nData     = 6;
+      section.data(6)  = dumData; %prealloc
       
 	  ;% MLC_Aero_Simulink2016a_DW.HILWrite_PWORK
 	  section.data(1).logicalSrcIdx = 10;
@@ -806,6 +814,14 @@
 	  section.data(4).logicalSrcIdx = 13;
 	  section.data(4).dtTransOffset = 3;
 	
+	  ;% MLC_Aero_Simulink2016a_DW.Scope_PWORK.LoggedData
+	  section.data(5).logicalSrcIdx = 14;
+	  section.data(5).dtTransOffset = 4;
+	
+	  ;% MLC_Aero_Simulink2016a_DW.Scope1_PWORK.LoggedData
+	  section.data(6).logicalSrcIdx = 15;
+	  section.data(6).dtTransOffset = 5;
+	
       nTotData = nTotData + section.nData;
       dworkMap.sections(4) = section;
       clear section
@@ -814,27 +830,27 @@
       section.data(6)  = dumData; %prealloc
       
 	  ;% MLC_Aero_Simulink2016a_DW.HILInitialize_ClockModes
-	  section.data(1).logicalSrcIdx = 14;
+	  section.data(1).logicalSrcIdx = 16;
 	  section.data(1).dtTransOffset = 0;
 	
 	  ;% MLC_Aero_Simulink2016a_DW.HILInitialize_AIConfigValues
-	  section.data(2).logicalSrcIdx = 15;
+	  section.data(2).logicalSrcIdx = 17;
 	  section.data(2).dtTransOffset = 1;
 	
 	  ;% MLC_Aero_Simulink2016a_DW.HILInitialize_DOStates
-	  section.data(3).logicalSrcIdx = 16;
+	  section.data(3).logicalSrcIdx = 18;
 	  section.data(3).dtTransOffset = 3;
 	
 	  ;% MLC_Aero_Simulink2016a_DW.HILInitialize_QuadratureModes
-	  section.data(4).logicalSrcIdx = 17;
+	  section.data(4).logicalSrcIdx = 19;
 	  section.data(4).dtTransOffset = 5;
 	
 	  ;% MLC_Aero_Simulink2016a_DW.HILInitialize_InitialEICounts
-	  section.data(5).logicalSrcIdx = 18;
+	  section.data(5).logicalSrcIdx = 20;
 	  section.data(5).dtTransOffset = 9;
 	
 	  ;% MLC_Aero_Simulink2016a_DW.HILReadTimebase_EncoderBuffer
-	  section.data(6).logicalSrcIdx = 19;
+	  section.data(6).logicalSrcIdx = 21;
 	  section.data(6).dtTransOffset = 13;
 	
       nTotData = nTotData + section.nData;
@@ -845,23 +861,23 @@
       section.data(5)  = dumData; %prealloc
       
 	  ;% MLC_Aero_Simulink2016a_DW.EnabledMovingAverage_SubsysRanB
-	  section.data(1).logicalSrcIdx = 20;
+	  section.data(1).logicalSrcIdx = 22;
 	  section.data(1).dtTransOffset = 0;
 	
 	  ;% MLC_Aero_Simulink2016a_DW.SwitchCase_ActiveSubsystem
-	  section.data(2).logicalSrcIdx = 21;
+	  section.data(2).logicalSrcIdx = 23;
 	  section.data(2).dtTransOffset = 1;
 	
 	  ;% MLC_Aero_Simulink2016a_DW.SwitchCaseActionSubsystem_Subsy
-	  section.data(3).logicalSrcIdx = 22;
+	  section.data(3).logicalSrcIdx = 24;
 	  section.data(3).dtTransOffset = 2;
 	
 	  ;% MLC_Aero_Simulink2016a_DW.SwitchCaseActionSubsystem1_Subs
-	  section.data(4).logicalSrcIdx = 23;
+	  section.data(4).logicalSrcIdx = 25;
 	  section.data(4).dtTransOffset = 3;
 	
 	  ;% MLC_Aero_Simulink2016a_DW.SwitchCaseActionSubsystem2_Subs
-	  section.data(5).logicalSrcIdx = 24;
+	  section.data(5).logicalSrcIdx = 26;
 	  section.data(5).dtTransOffset = 4;
 	
       nTotData = nTotData + section.nData;
@@ -872,11 +888,11 @@
       section.data(2)  = dumData; %prealloc
       
 	  ;% MLC_Aero_Simulink2016a_DW.HILInitialize_DOBits
-	  section.data(1).logicalSrcIdx = 25;
+	  section.data(1).logicalSrcIdx = 27;
 	  section.data(1).dtTransOffset = 0;
 	
 	  ;% MLC_Aero_Simulink2016a_DW.EnabledMovingAverage_MODE
-	  section.data(2).logicalSrcIdx = 26;
+	  section.data(2).logicalSrcIdx = 28;
 	  section.data(2).dtTransOffset = 2;
 	
       nTotData = nTotData + section.nData;
@@ -909,8 +925,8 @@
   ;%
 
 
-  targMap.checksum0 = 730458705;
-  targMap.checksum1 = 907162466;
-  targMap.checksum2 = 2684014482;
-  targMap.checksum3 = 2612127013;
+  targMap.checksum0 = 2615036619;
+  targMap.checksum1 = 221292424;
+  targMap.checksum2 = 3090506385;
+  targMap.checksum3 = 2505326723;
 

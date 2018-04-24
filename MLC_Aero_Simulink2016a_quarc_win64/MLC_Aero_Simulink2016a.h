@@ -7,9 +7,9 @@
  *
  * Code generation for model "MLC_Aero_Simulink2016a".
  *
- * Model version              : 1.101
+ * Model version              : 1.102
  * Simulink Coder version : 8.10 (R2016a) 10-Feb-2016
- * C source code generated on : Tue Apr 24 11:56:30 2018
+ * C source code generated on : Tue Apr 24 12:20:47 2018
  *
  * Target selection: quarc_win64.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -814,6 +814,8 @@
 
 /* Block signals (auto storage) */
 typedef struct {
+  real_T PitchReference;               /* '<Root>/Pitch Reference ' */
+  real_T YawReference;                 /* '<Root>/Yaw Reference' */
   real_T Countstorads[2];              /* '<S11>/Counts to rads' */
   real_T Sum;                          /* '<S11>/Sum' */
   real_T Sum_a[2];                     /* '<Root>/Sum' */
@@ -852,6 +854,14 @@ typedef struct {
   struct {
     void *LoggedData;
   } MotorVoltages_PWORK;               /* '<Root>/Motor Voltages' */
+
+  struct {
+    void *LoggedData;
+  } Scope_PWORK;                       /* '<Root>/Scope' */
+
+  struct {
+    void *LoggedData[2];
+  } Scope1_PWORK;                      /* '<Root>/Scope1' */
 
   int32_T HILInitialize_ClockModes;    /* '<S11>/HIL Initialize' */
   int32_T HILInitialize_AIConfigValues[2];/* '<S11>/HIL Initialize' */
@@ -1056,7 +1066,7 @@ struct P_MLC_Aero_Simulink2016a_T_ {
   real_T YawReference_Amplitude;       /* Expression: pi/4
                                         * Referenced by: '<Root>/Yaw Reference'
                                         */
-  real_T YawReference_Frequency;       /* Expression: 0.5
+  real_T YawReference_Frequency;       /* Computed Parameter: YawReference_Frequency
                                         * Referenced by: '<Root>/Yaw Reference'
                                         */
   real_T Countstorads_Gain[2];         /* Expression: [2*pi/2048 2*pi/4096]
