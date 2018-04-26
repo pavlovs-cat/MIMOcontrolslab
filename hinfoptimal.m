@@ -1,8 +1,8 @@
-%preliminaries
-
-Wt = []; %Not sure what sensitivity weight should be
+preliminaries
+%% Hinf Optimal
+%Wt = info.W1; %Not sure what sensitivity weight should be
 Wu = 1/25*eye(2); %control weight
-
+Wt=[]
 w_max = 100;
 w_min = 0;
 w_try = (w_max+w_min)/2;
@@ -19,11 +19,11 @@ while(w_max-w_min > tol)
     else
         w_min = w_try;
     end
-    w_try = (w_max + w_min);
+    w_try = (w_max + w_min)/2;
 end
-
+K=Kinf
 %Check RP + RS
-Sinf = eye(2)-feedback(Gunc*Kinf,eye(2));
+Sinf = eye(2)-feedback(G_unc*Kinf,eye(2));
 bodemag(Sinf,inv(Wp))
 [STABMARG,DESTABUNC,REPORT,INFO] = robuststab(Sinf)
 
