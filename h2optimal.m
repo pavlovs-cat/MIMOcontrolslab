@@ -1,20 +1,21 @@
 %Solves the H2 optimal control problem for the Quanser Aero, neglecting
 %uncertainty
 preliminaries
+%% Lets not run preliminaries every time :)
 G = G_nom;J_body
 wc = 5; %crossover frequency needed for performance weight
 Wu = 1/25*eye(2); %control weight
 Wp = makeweight(100, wc, 1/3)*eye(2); %performance weight
 %not sure what sensitivity weight should be
 %Wt = Wt/(s+1000)*eye(2); %add a HF pole to allow h2syn to solve
-P = augw(G, Wp, Wu, Wt);
+P = augw(G, Wp, Wu, []);
 [K,CL,GAM] = h2syn(P, 2, 2)
 bodemag(K)
 
 
 
 %Check RP + RS
-S2 = eye(2)-feedback(Gunc*K,eye(2));
+S2 = eye(2)-feedback(G_unc*K,eye(2));
 bodemag(S2,inv(Wp))
 [STABMARG,DESTABUNC,REPORT,INFO] = robuststab(S2)
 
