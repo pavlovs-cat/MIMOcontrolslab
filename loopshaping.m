@@ -1,4 +1,4 @@
-preliminaries % load uncertain plant
+%preliminaries % load uncertain plant
 %% Loop Shaping
 s = tf('s');
 wc = 1;
@@ -21,6 +21,7 @@ Delta_2a=usample(D2,10);
 %ncfsyn gkinverse
 
 figure()
+
 for i=1:10
     Delta_1=Delta_1a(:,:,i,1)
     Delta_2=Delta_2a(:,:,i,1)
@@ -34,4 +35,4 @@ for i=1:10
 end
 xlabel('time(s)')
 ylabel('Angles(rad)')
-title('Pitch(red) and Yaw(blue) Responses')
+title('Pitch(red) and Yaw(blue) Responses for Inverse Loopshaping')
