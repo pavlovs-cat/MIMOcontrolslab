@@ -9,7 +9,7 @@ run('quanser_aero_state_space.m')
 %% Find Poles & Zeros
 s=tf('s')
 G_nom=C*inv(s*eye(4)-A.NominalValue)*B.NominalValue+D
-zeros=tzero(G_nom);
+zeross=tzero(G_nom);
 poles=eig(G_nom);
 %% Uncertain Plant
 G_unc=C*inv(s*eye(4)-A)*B+D

@@ -1,4 +1,8 @@
-preliminaries
+%preliminaries
 
-Wu = 1/25*eye(2);
-Wp = makeweight(100, wc, 1/3)*eye(2);
+% use conventional loopshaping to get initial value for K
+loopshaping
+K_l = K;
+
+%Use Hinf loopshaping to add RS
+[Kinf,cl,gam,info] = loopsyn(G_unc,G_unc*K_l);
