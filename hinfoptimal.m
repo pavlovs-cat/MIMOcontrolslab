@@ -10,7 +10,7 @@ tol = .01;
 
 %maximize wc
 while(w_max-w_min > tol)
-    Wp = makeweight(100, w_try, 1/3)*eye(2); %performance weight
+    Wp = makeweight(100, w_try, 1/10)*eye(2); %performance weight
     P = augw(G_nom, Wp, Wu, Wt);
     [Kinf,CL,GAM] = hinfsyn(P,2,2);
     
@@ -27,7 +27,7 @@ K=Kinf
 Sinf = eye(2)-feedback(G_unc*Kinf,eye(2));
 bodemag(Sinf,inv(Wp))
 [STABMARG,DESTABUNC,REPORT,INFO] = robuststab(Sinf)
-
+%%
 D1=ultidyn('D1',[1 1]);
 D2=ultidyn('D2',[1 1]);
 Delta_1=usample(D1);
