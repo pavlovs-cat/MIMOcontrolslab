@@ -2,15 +2,17 @@ preliminaries
 %%
 % use conventional loopshaping to get initial value for K
 s = tf('s');
-wc = 3;
+wc = 1;
 Ld = eye(2)*(wc/s); %desired loopshape
-K_l=minreal((1/(s/10+1))^2*(Ld));
+K_l=inv(G_nom)*(1/(s/1000+1))^2;
 %L=minreal(10*(1/(s/100+1))^2*(Ld))
 % L=minreal(10*s*(1/(s/1000+1))^2*(Ld))
 
 %Use Hinf loopshaping to add RS
 
-
+%[k,cl,gam,info] = loopsyn(G_unc,L);
+%K=balred(k,5)
+Wp = makeweight(100, 5, 1/3)*eye(2);
 [Ki,cl,gam,info] =ncfsyn(G_unc,inv(G_nom),K_l);
 Km=-Ki
 K=balred(Km,6)
