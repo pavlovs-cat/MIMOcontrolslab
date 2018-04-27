@@ -9,7 +9,7 @@
  *
  * Model version              : 1.114
  * Simulink Coder version : 8.10 (R2016a) 10-Feb-2016
- * C source code generated on : Fri Apr 27 17:45:45 2018
+ * C source code generated on : Fri Apr 27 18:07:47 2018
  *
  * Target selection: quarc_win64.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -159,54 +159,6 @@ P_MLC_Aero_Simulink2016a_T MLC_Aero_Simulink2016a_P = {
    * Referenced by: '<S7>/HIL Initialize'
    */
   { 0.0, 0.0, 1.0 },
-
-  /*  Computed Parameter: Internal_A
-   * Referenced by: '<S1>/Internal'
-   */
-  { -7.8163706629399583E-5, -0.99774190924100759, 0.045048376035430313,
-    3.139379094067175E-15, -2.7233686379070755E-7, -1.2236181540200623E-8,
-    0.0014627337638282692, -0.075230846750762234, -12.349375765391844,
-    -4.3011047151146594E-17, 1.98759430306427E-11, 8.9270810225228876E-13,
-    0.0033118642963915128, 9.6642582886225288, -21.924690989542665,
-    -7.5580561164612461E-17, -3.2370391917116064E-11, -1.4526387363846171E-12,
-    -5.4875461983053364E-6, -0.07022408201822182, 0.0030541381872563962,
-    1.2577232806495178E-15, -1.4383281066801662E-7, -6.3690013990032137E-9,
-    1.220125020580768E-6, -7.7102122076488217E-8, -7.5657101845108273E-8,
-    -1.3259634129270298E-7, 12.944873115714824, 0.573175729967217,
-    -2.3681868205774784E-8, -7.3180151682245919E-8, -2.9541496903154726E-7,
-    5.2377739393866151E-10, 6.7542200790060237E-16, 0.0033240518904090362 },
-
-  /*  Computed Parameter: Internal_B
-   * Referenced by: '<S1>/Internal'
-   */
-  { 0.032132864700221461, 0.059939161443083921, 0.040550309533811155,
-    -22.505865092089714, 0.932434755252763, -517.47933141727435,
-    -1.0591142272710485, -0.0019083870516795559, -1.4875643432661972E-8,
-    -6.4815499180819351E-7, 1.0942322523911508E-8, -3.4796833689812467E-6 },
-
-  /*  Computed Parameter: Internal_C
-   * Referenced by: '<S1>/Internal'
-   */
-  { 54.673362822097076, 6.9480217426267359, 330.19251714623488,
-    1.6655051833153121, 1.1695501189270378E-6, 2.9232758478830519E-6,
-    67.09184418699742, 5.8955173251758666, 464.87835761703218,
-    2.0440290886142436, 1.4353569429043954E-6, 3.5876567222970696E-6 },
-
-  /*  Expression: [0 0]
-   * Referenced by: '<S7>/No Control'
-   */
-  { 0.0, 0.0 },
-  0.0,                                 /* Expression: 0
-                                        * Referenced by: '<S7>/Motor Enable'
-                                        */
-  0.0,                                 /* Expression: 0
-                                        * Referenced by: '<S7>/LED Colour'
-                                        */
-
-  /*  Expression: [2*pi/2048 2*pi/4096]
-   * Referenced by: '<S7>/Counts to rads'
-   */
-  { 0.0030679615757712823, 0.0015339807878856412 },
   0.52359877559829882,                 /* Expression: pi/6
                                         * Referenced by: '<Root>/Pitch Reference '
                                         */
@@ -218,6 +170,122 @@ P_MLC_Aero_Simulink2016a_T MLC_Aero_Simulink2016a_P = {
                                         */
   0.079577471545947673,                /* Computed Parameter: YawReference_Frequency
                                         * Referenced by: '<Root>/Yaw Reference'
+                                        */
+
+  /*  Expression: [2*pi/2048 2*pi/4096]
+   * Referenced by: '<S7>/Counts to rads'
+   */
+  { 0.0030679615757712823, 0.0015339807878856412 },
+
+  /*  Computed Parameter: Internal_A
+   * Referenced by: '<S1>/Internal'
+   */
+  { 0.9016425322952567, 0.66242766427347244, 2.5693789337651367,
+    -0.19548079078682179, 1.2339965128887116, 0.0051999365820580906,
+    -0.812051267673518, -0.19852283010730659, -2.9326292446246378,
+    -8.4608806703343049, 0.21870949063771475, -0.029507535405786187,
+    -14.981645747895259, 1.1704415424596732, -16.65040968735191,
+    -0.69052227373275932, 0.76497665143845617, 0.0010247550581039236,
+    3.7788216711855314, 12.564377706849829, 7.2623414704397318,
+    1.2705406086075184, -0.917212315231867, 0.075223613439460324,
+    -10.183488351120216, -1.5703156644437071, -21.157167990214933,
+    7.4123628185278161, -9.5469490905666454, -0.0011821194944317082,
+    -311.87699419548818, -156.31002097745628, -890.18342480192939,
+    -2038.0327398106849, 37.823829866879144, -7.7789332592773768 },
+
+  /*  Computed Parameter: Internal_B
+   * Referenced by: '<S1>/Internal'
+   */
+  { 35.573213390019887, 5.3099527807511482, 5.7353597524209921,
+    -16.912155735978743, 42.606432489952439, 16.046812854755739,
+    -16.085524312486637, 18.525943359560532, 25.60062898753538,
+    -3.50090055783088, -28.987751595709245, 4226.2256162661461 },
+
+  /*  Computed Parameter: Internal_C
+   * Referenced by: '<S1>/Internal'
+   */
+  { 12.958353034908264, 2.6954807237597906, 20.734972639156393,
+    -45.325083372330738, 15.372385839767126, -0.11134528341951276,
+    22.369233608673923, 1.2988172988173119, 43.565600777641656,
+    0.22671504810984996, 15.968248976286409, 0.037486190178362404 },
+
+  /*  Computed Parameter: Internal_D
+   * Referenced by: '<S1>/Internal'
+   */
+  { -0.28446828717038103, 9.5212961685484743, -0.35210638169186287,
+    11.785177097495687 },
+
+  /*  Computed Parameter: Internal_A_j
+   * Referenced by: '<S8>/Internal'
+   */
+  { -11.738229699342803, -11.235634170029028, 11.824764488686604,
+    11.149099380685227 },
+
+  /*  Computed Parameter: Internal_B_p
+   * Referenced by: '<S8>/Internal'
+   */
+  { 7.1059498834651738, -7.1059498834651738 },
+
+  /*  Computed Parameter: Internal_C_f
+   * Referenced by: '<S8>/Internal'
+   */
+  { -0.66021386023982487, -0.71634966509698128 },
+  0.42585470599155656,                 /* Computed Parameter: Internal_D_a
+                                        * Referenced by: '<S8>/Internal'
+                                        */
+  -11.80840324623302,                  /* Computed Parameter: Internal_A_j5
+                                        * Referenced by: '<S5>/Internal'
+                                        */
+  0.56708592499715182,                 /* Computed Parameter: Internal_B_g
+                                        * Referenced by: '<S5>/Internal'
+                                        */
+  0.54166224972906141,                 /* Computed Parameter: Internal_C_n
+                                        * Referenced by: '<S5>/Internal'
+                                        */
+  0.45486929985399055,                 /* Computed Parameter: Internal_D_n
+                                        * Referenced by: '<S5>/Internal'
+                                        */
+
+  /*  Computed Parameter: Internal_A_c
+   * Referenced by: '<S9>/Internal'
+   */
+  { -11.058664881176867, -10.648295121360611, 11.145199670520666,
+    10.56176033201681 },
+
+  /*  Computed Parameter: Internal_B_p2
+   * Referenced by: '<S9>/Internal'
+   */
+  { 6.6975735859859817, -6.6975735859859808 },
+
+  /*  Computed Parameter: Internal_C_nt
+   * Referenced by: '<S9>/Internal'
+   */
+  { -0.89321763192258841, -0.91814859587190434 },
+  0.55896970172044136,                 /* Computed Parameter: Internal_D_f
+                                        * Referenced by: '<S9>/Internal'
+                                        */
+  -4.8774971144687447,                 /* Computed Parameter: Internal_A_e
+                                        * Referenced by: '<S6>/Internal'
+                                        */
+  0.264900597068294,                   /* Computed Parameter: Internal_B_i
+                                        * Referenced by: '<S6>/Internal'
+                                        */
+  -3.3041438974729269,                 /* Computed Parameter: Internal_C_k
+                                        * Referenced by: '<S6>/Internal'
+                                        */
+  0.5167316577862846,                  /* Computed Parameter: Internal_D_b
+                                        * Referenced by: '<S6>/Internal'
+                                        */
+
+  /*  Expression: [0 0]
+   * Referenced by: '<S7>/No Control'
+   */
+  { 0.0, 0.0 },
+  0.0,                                 /* Expression: 0
+                                        * Referenced by: '<S7>/Motor Enable'
+                                        */
+  0.0,                                 /* Expression: 0
+                                        * Referenced by: '<S7>/LED Colour'
                                         */
   0,                                   /* Computed Parameter: HILInitialize_CKChannels
                                         * Referenced by: '<S7>/HIL Initialize'

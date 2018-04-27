@@ -5,32 +5,28 @@ s = tf('s');
 wc = 3;
 Ld = eye(2)*(wc/s); %desired loopshape
 K_l=minreal((1/(s/10+1))^2*(Ld));
-<<<<<<< HEAD
 
 %Use Hinf loopshaping to add RS
-[k,cl,gam,info] = ncfsyn(G_unc,inv(G_nom),K_l);
-Km=-k
-K=balred(Km,6)
-disp('Done')
-=======
 %L=minreal(10*(1/(s/100+1))^2*(Ld))
 % L=minreal(10*s*(1/(s/1000+1))^2*(Ld))
 
 %Use Hinf loopshaping to add RS
-<<<<<<< HEAD
+
 
 
 [Ki,cl,gam,info] =ncfsyn(G_unc,inv(G_nom),K_l);
 Km=-Ki
 K=balred(Km,6)
-=======
-[k,cl,gam,info] = loopsyn(G_unc,L);
-K=balred(k,5)
+
 %[Kinf,cl,gam,info] = ncfsyn(G_unc,K_l);
 %K = Kinf;
 %K=balred(K,6)
->>>>>>> c425cc235ff654e3df3fb3f2169cb5cee8203965
->>>>>>> c067c407d5f0016123953aefb0c129032471dae8
+
+%%
+D1=ultidyn('D1',[1 1]);
+D2=ultidyn('D2',[1 1]);
+Delta_1=usample(D1,1);
+Delta_2=usample(D2,1);
 %%
 %Check robust stability
 S = eye(2)-feedback(G_unc*K,eye(2));
