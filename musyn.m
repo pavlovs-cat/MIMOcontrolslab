@@ -31,13 +31,6 @@ P = sysic;
 % P = [Wp; Wu ]*[eye(2) Gpert]; 
 [k,clp,bnd] = dksyn(P,2,2); 
 K=balred(k,6)
-%% Catherine Side 
-Wt = [W_I_Pitch, 0; 0, W_I_Yaw];
-
-%Pmu should be 4x4 uncertain state space
-Pmu = [Wp, Wp*G_unc; -eye(2), -G_unc];
-    
-[K,CL,mubnd] = dksyn(Pmu,2,2);
 
 Smu = inv(eye(2)+G_unc*K);
 bodemag(Smu.NominalValue);
