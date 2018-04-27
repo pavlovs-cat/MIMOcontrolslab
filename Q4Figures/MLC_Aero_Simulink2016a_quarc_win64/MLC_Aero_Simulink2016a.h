@@ -7,9 +7,9 @@
  *
  * Code generation for model "MLC_Aero_Simulink2016a".
  *
- * Model version              : 1.113
+ * Model version              : 1.114
  * Simulink Coder version : 8.10 (R2016a) 10-Feb-2016
- * C source code generated on : Fri Apr 27 16:35:57 2018
+ * C source code generated on : Fri Apr 27 17:22:37 2018
  *
  * Target selection: quarc_win64.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -820,8 +820,6 @@ typedef struct {
   real_T Sum;                          /* '<S7>/Sum' */
   real_T Sum_a[2];                     /* '<Root>/Sum' */
   real_T Internal[2];                  /* '<S1>/Internal' */
-  real_T Internal_m;                   /* '<S8>/Internal' */
-  real_T Internal_o;                   /* '<S9>/Internal' */
   real_T MotorEnable[2];               /* '<S7>/Motor Enable' */
   real_T TmpSignalConversionAtToWorkspac[2];
   real_T Stepend_time;                 /* '<S15>/Step: end_time' */
@@ -888,29 +886,17 @@ typedef struct {
 
 /* Continuous states (auto storage) */
 typedef struct {
-  real_T Internal_CSTATE[8];           /* '<S1>/Internal' */
-  real_T Internal_CSTATE_i[2];         /* '<S8>/Internal' */
-  real_T Internal_CSTATE_j;            /* '<S5>/Internal' */
-  real_T Internal_CSTATE_jy[2];        /* '<S9>/Internal' */
-  real_T Internal_CSTATE_d;            /* '<S6>/Internal' */
+  real_T Internal_CSTATE[6];           /* '<S1>/Internal' */
 } X_MLC_Aero_Simulink2016a_T;
 
 /* State derivatives (auto storage) */
 typedef struct {
-  real_T Internal_CSTATE[8];           /* '<S1>/Internal' */
-  real_T Internal_CSTATE_i[2];         /* '<S8>/Internal' */
-  real_T Internal_CSTATE_j;            /* '<S5>/Internal' */
-  real_T Internal_CSTATE_jy[2];        /* '<S9>/Internal' */
-  real_T Internal_CSTATE_d;            /* '<S6>/Internal' */
+  real_T Internal_CSTATE[6];           /* '<S1>/Internal' */
 } XDot_MLC_Aero_Simulink2016a_T;
 
 /* State disabled  */
 typedef struct {
-  boolean_T Internal_CSTATE[8];        /* '<S1>/Internal' */
-  boolean_T Internal_CSTATE_i[2];      /* '<S8>/Internal' */
-  boolean_T Internal_CSTATE_j;         /* '<S5>/Internal' */
-  boolean_T Internal_CSTATE_jy[2];     /* '<S9>/Internal' */
-  boolean_T Internal_CSTATE_d;         /* '<S6>/Internal' */
+  boolean_T Internal_CSTATE[6];        /* '<S1>/Internal' */
 } XDis_MLC_Aero_Simulink2016a_T;
 
 #ifndef ODE1_INTG
@@ -1071,65 +1057,17 @@ struct P_MLC_Aero_Simulink2016a_T_ {
   real_T Countstorads_Gain[2];         /* Expression: [2*pi/2048 2*pi/4096]
                                         * Referenced by: '<S7>/Counts to rads'
                                         */
-  real_T Internal_A[50];               /* Computed Parameter: Internal_A
+  real_T Internal_A[36];               /* Computed Parameter: Internal_A
                                         * Referenced by: '<S1>/Internal'
                                         */
-  real_T Internal_B[14];               /* Computed Parameter: Internal_B
+  real_T Internal_B[12];               /* Computed Parameter: Internal_B
                                         * Referenced by: '<S1>/Internal'
                                         */
-  real_T Internal_C[16];               /* Computed Parameter: Internal_C
+  real_T Internal_C[12];               /* Computed Parameter: Internal_C
                                         * Referenced by: '<S1>/Internal'
                                         */
   real_T Internal_D[4];                /* Computed Parameter: Internal_D
                                         * Referenced by: '<S1>/Internal'
-                                        */
-  real_T Internal_A_j[4];              /* Computed Parameter: Internal_A_j
-                                        * Referenced by: '<S8>/Internal'
-                                        */
-  real_T Internal_B_p[2];              /* Computed Parameter: Internal_B_p
-                                        * Referenced by: '<S8>/Internal'
-                                        */
-  real_T Internal_C_f[2];              /* Computed Parameter: Internal_C_f
-                                        * Referenced by: '<S8>/Internal'
-                                        */
-  real_T Internal_D_a;                 /* Computed Parameter: Internal_D_a
-                                        * Referenced by: '<S8>/Internal'
-                                        */
-  real_T Internal_A_j5;                /* Computed Parameter: Internal_A_j5
-                                        * Referenced by: '<S5>/Internal'
-                                        */
-  real_T Internal_B_g;                 /* Computed Parameter: Internal_B_g
-                                        * Referenced by: '<S5>/Internal'
-                                        */
-  real_T Internal_C_n;                 /* Computed Parameter: Internal_C_n
-                                        * Referenced by: '<S5>/Internal'
-                                        */
-  real_T Internal_D_n;                 /* Computed Parameter: Internal_D_n
-                                        * Referenced by: '<S5>/Internal'
-                                        */
-  real_T Internal_A_c[4];              /* Computed Parameter: Internal_A_c
-                                        * Referenced by: '<S9>/Internal'
-                                        */
-  real_T Internal_B_p2[2];             /* Computed Parameter: Internal_B_p2
-                                        * Referenced by: '<S9>/Internal'
-                                        */
-  real_T Internal_C_nt[2];             /* Computed Parameter: Internal_C_nt
-                                        * Referenced by: '<S9>/Internal'
-                                        */
-  real_T Internal_D_f;                 /* Computed Parameter: Internal_D_f
-                                        * Referenced by: '<S9>/Internal'
-                                        */
-  real_T Internal_A_e;                 /* Computed Parameter: Internal_A_e
-                                        * Referenced by: '<S6>/Internal'
-                                        */
-  real_T Internal_B_i;                 /* Computed Parameter: Internal_B_i
-                                        * Referenced by: '<S6>/Internal'
-                                        */
-  real_T Internal_C_k;                 /* Computed Parameter: Internal_C_k
-                                        * Referenced by: '<S6>/Internal'
-                                        */
-  real_T Internal_D_b;                 /* Computed Parameter: Internal_D_b
-                                        * Referenced by: '<S6>/Internal'
                                         */
   real_T NoControl_Value[2];           /* Expression: [0 0]
                                         * Referenced by: '<S7>/No Control'
@@ -1316,7 +1254,7 @@ struct tag_RTM_MLC_Aero_Simulink2016_T {
     boolean_T zCCacheNeedsReset;
     boolean_T derivCacheNeedsReset;
     boolean_T blkStateChange;
-    real_T odeF[1][14];
+    real_T odeF[1][6];
     ODE1_IntgData intgData;
     void *dwork;
   } ModelData;

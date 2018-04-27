@@ -7,9 +7,9 @@
  *
  * Code generation for model "MLC_Aero_Simulink2016a".
  *
- * Model version              : 1.113
+ * Model version              : 1.114
  * Simulink Coder version : 8.10 (R2016a) 10-Feb-2016
- * C source code generated on : Fri Apr 27 16:35:57 2018
+ * C source code generated on : Fri Apr 27 17:22:37 2018
  *
  * Target selection: quarc_win64.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -48,7 +48,7 @@ static void rt_ertODEUpdateContinuousStates(RTWSolverInfo *si )
   ODE1_IntgData *id = (ODE1_IntgData *)rtsiGetSolverData(si);
   real_T *f0 = id->f[0];
   int_T i;
-  int_T nXc = 14;
+  int_T nXc = 6;
   rtsiSetSimTimeStep(si,MINOR_TIME_STEP);
   rtsiSetdX(si, f0);
   MLC_Aero_Simulink2016a_derivatives();
@@ -71,8 +71,7 @@ void MLC_Aero_Simulink2016a_output(void)
   real_T temp;
   int_T ci;
   int8_T rtAction;
-  static const int8_T jc[16] = { 0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, 4, 5, 6, 7
-  };
+  static const int8_T jc[12] = { 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5 };
 
   if (rtmIsMajorTimeStep(MLC_Aero_Simulink2016a_M)) {
     /* set solver stop time */
@@ -300,14 +299,14 @@ void MLC_Aero_Simulink2016a_output(void)
 
   /* StateSpace: '<S1>/Internal' */
   MLC_Aero_Simulink2016a_B.Internal[0] = 0.0;
-  for (ci = 0; ci < 8; ci++) {
+  for (ci = 0; ci < 6; ci++) {
     MLC_Aero_Simulink2016a_B.Internal[0] +=
       MLC_Aero_Simulink2016a_P.Internal_C[ci] *
       MLC_Aero_Simulink2016a_X.Internal_CSTATE[jc[ci]];
   }
 
   MLC_Aero_Simulink2016a_B.Internal[1] = 0.0;
-  while (ci < 16) {
+  while (ci < 12) {
     MLC_Aero_Simulink2016a_B.Internal[1] +=
       MLC_Aero_Simulink2016a_P.Internal_C[ci] *
       MLC_Aero_Simulink2016a_X.Internal_CSTATE[jc[ci]];
@@ -325,68 +324,42 @@ void MLC_Aero_Simulink2016a_output(void)
 
   /* End of StateSpace: '<S1>/Internal' */
 
-  /* StateSpace: '<S8>/Internal' */
-  MLC_Aero_Simulink2016a_B.Internal_m = 0.0;
-  MLC_Aero_Simulink2016a_B.Internal_m += MLC_Aero_Simulink2016a_P.Internal_C_f[0]
-    * MLC_Aero_Simulink2016a_X.Internal_CSTATE_i[0];
-  MLC_Aero_Simulink2016a_B.Internal_m += MLC_Aero_Simulink2016a_P.Internal_C_f[1]
-    * MLC_Aero_Simulink2016a_X.Internal_CSTATE_i[1];
-  MLC_Aero_Simulink2016a_B.Internal_m += MLC_Aero_Simulink2016a_P.Internal_D_a *
-    MLC_Aero_Simulink2016a_B.Internal[0];
-
-  /* StateSpace: '<S9>/Internal' */
-  MLC_Aero_Simulink2016a_B.Internal_o = 0.0;
-  MLC_Aero_Simulink2016a_B.Internal_o += MLC_Aero_Simulink2016a_P.Internal_C_nt
-    [0] * MLC_Aero_Simulink2016a_X.Internal_CSTATE_jy[0];
-  MLC_Aero_Simulink2016a_B.Internal_o += MLC_Aero_Simulink2016a_P.Internal_C_nt
-    [1] * MLC_Aero_Simulink2016a_X.Internal_CSTATE_jy[1];
-  MLC_Aero_Simulink2016a_B.Internal_o += MLC_Aero_Simulink2016a_P.Internal_D_f *
-    MLC_Aero_Simulink2016a_B.Internal[1];
-
   /* Switch: '<S7>/Motor Enable' incorporates:
    *  Constant: '<S7>/No Control'
    */
   if (MLC_Aero_Simulink2016a_B.Stepend_time >
       MLC_Aero_Simulink2016a_P.MotorEnable_Threshold) {
-    /* Sum: '<S2>/Sum' incorporates:
-     *  StateSpace: '<S5>/Internal'
+    /* Saturate: '<S7>/+//- 24V' incorporates:
+     *  Sum: '<S2>/Sum'
+     *  Sum: '<S2>/Sum1'
      */
-    temp = (MLC_Aero_Simulink2016a_P.Internal_C_n *
-            MLC_Aero_Simulink2016a_X.Internal_CSTATE_j +
-            MLC_Aero_Simulink2016a_P.Internal_D_n *
-            MLC_Aero_Simulink2016a_B.Internal_m) +
-      MLC_Aero_Simulink2016a_B.Internal[0];
-
-    /* Saturate: '<S7>/+//- 24V' */
-    if (temp > MLC_Aero_Simulink2016a_P.u4V_UpperSat) {
+    if (MLC_Aero_Simulink2016a_B.Internal[0] >
+        MLC_Aero_Simulink2016a_P.u4V_UpperSat) {
       MLC_Aero_Simulink2016a_B.MotorEnable[0] =
         MLC_Aero_Simulink2016a_P.u4V_UpperSat;
-    } else if (temp < MLC_Aero_Simulink2016a_P.u4V_LowerSat) {
+    } else if (MLC_Aero_Simulink2016a_B.Internal[0] <
+               MLC_Aero_Simulink2016a_P.u4V_LowerSat) {
       MLC_Aero_Simulink2016a_B.MotorEnable[0] =
         MLC_Aero_Simulink2016a_P.u4V_LowerSat;
     } else {
-      MLC_Aero_Simulink2016a_B.MotorEnable[0] = temp;
+      MLC_Aero_Simulink2016a_B.MotorEnable[0] =
+        MLC_Aero_Simulink2016a_B.Internal[0];
     }
 
-    /* Sum: '<S2>/Sum1' incorporates:
-     *  StateSpace: '<S6>/Internal'
-     */
-    temp = (MLC_Aero_Simulink2016a_P.Internal_C_k *
-            MLC_Aero_Simulink2016a_X.Internal_CSTATE_d +
-            MLC_Aero_Simulink2016a_P.Internal_D_b *
-            MLC_Aero_Simulink2016a_B.Internal_o) +
-      MLC_Aero_Simulink2016a_B.Internal[1];
-
-    /* Saturate: '<S7>/+//- 24V' */
-    if (temp > MLC_Aero_Simulink2016a_P.u4V_UpperSat) {
+    if (MLC_Aero_Simulink2016a_B.Internal[1] >
+        MLC_Aero_Simulink2016a_P.u4V_UpperSat) {
       MLC_Aero_Simulink2016a_B.MotorEnable[1] =
         MLC_Aero_Simulink2016a_P.u4V_UpperSat;
-    } else if (temp < MLC_Aero_Simulink2016a_P.u4V_LowerSat) {
+    } else if (MLC_Aero_Simulink2016a_B.Internal[1] <
+               MLC_Aero_Simulink2016a_P.u4V_LowerSat) {
       MLC_Aero_Simulink2016a_B.MotorEnable[1] =
         MLC_Aero_Simulink2016a_P.u4V_LowerSat;
     } else {
-      MLC_Aero_Simulink2016a_B.MotorEnable[1] = temp;
+      MLC_Aero_Simulink2016a_B.MotorEnable[1] =
+        MLC_Aero_Simulink2016a_B.Internal[1];
     }
+
+    /* End of Saturate: '<S7>/+//- 24V' */
   } else {
     MLC_Aero_Simulink2016a_B.MotorEnable[0] =
       MLC_Aero_Simulink2016a_P.NoControl_Value[0];
@@ -508,83 +481,32 @@ void MLC_Aero_Simulink2016a_derivatives(void)
 {
   int_T is;
   int_T ci;
-  static const int8_T ir[9] = { 0, 8, 16, 24, 32, 40, 41, 42, 50 };
+  static const int8_T jc[36] = { 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3,
+    4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5 };
 
-  static const int8_T ir_0[9] = { 0, 2, 4, 6, 8, 10, 11, 12, 14 };
-
-  static const int8_T jc[50] = { 0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, 4, 5, 6, 7,
-    0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, 4, 5, 6, 7, 5, 6,
-    0, 1, 2, 3, 4, 5, 6, 7 };
-
-  static const int8_T jc_0[14] = { 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1 };
+  static const int8_T jc_0[12] = { 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1 };
 
   XDot_MLC_Aero_Simulink2016a_T *_rtXdot;
   _rtXdot = ((XDot_MLC_Aero_Simulink2016a_T *)
              MLC_Aero_Simulink2016a_M->ModelData.derivs);
 
   /* Derivatives for StateSpace: '<S1>/Internal' */
-  for (is = 0; is < 8; is++) {
+  for (is = 0; is < 6; is++) {
     _rtXdot->Internal_CSTATE[is] = 0.0;
-    for (ci = ir[is]; ci < ir[is + 1]; ci++) {
+    for (ci = 6 * is; ci < (is + 1) * 6; ci++) {
       _rtXdot->Internal_CSTATE[is] += MLC_Aero_Simulink2016a_P.Internal_A[ci] *
         MLC_Aero_Simulink2016a_X.Internal_CSTATE[jc[ci]];
     }
   }
 
-  for (is = 0; is < 8; is++) {
-    for (ci = ir_0[is]; ci < ir_0[is + 1]; ci++) {
+  for (is = 0; is < 6; is++) {
+    for (ci = is << 1; ci < ((is + 1) << 1); ci++) {
       _rtXdot->Internal_CSTATE[is] += MLC_Aero_Simulink2016a_P.Internal_B[ci] *
         MLC_Aero_Simulink2016a_B.Sum_a[jc_0[ci]];
     }
   }
 
   /* End of Derivatives for StateSpace: '<S1>/Internal' */
-
-  /* Derivatives for StateSpace: '<S8>/Internal' */
-  _rtXdot->Internal_CSTATE_i[0] = 0.0;
-  _rtXdot->Internal_CSTATE_i[1] = 0.0;
-  _rtXdot->Internal_CSTATE_i[0] += MLC_Aero_Simulink2016a_P.Internal_A_j[0] *
-    MLC_Aero_Simulink2016a_X.Internal_CSTATE_i[0];
-  _rtXdot->Internal_CSTATE_i[0] += MLC_Aero_Simulink2016a_P.Internal_A_j[1] *
-    MLC_Aero_Simulink2016a_X.Internal_CSTATE_i[1];
-  _rtXdot->Internal_CSTATE_i[1] += MLC_Aero_Simulink2016a_P.Internal_A_j[2] *
-    MLC_Aero_Simulink2016a_X.Internal_CSTATE_i[0];
-  _rtXdot->Internal_CSTATE_i[1] += MLC_Aero_Simulink2016a_P.Internal_A_j[3] *
-    MLC_Aero_Simulink2016a_X.Internal_CSTATE_i[1];
-  _rtXdot->Internal_CSTATE_i[0] += MLC_Aero_Simulink2016a_P.Internal_B_p[0] *
-    MLC_Aero_Simulink2016a_B.Internal[0];
-  _rtXdot->Internal_CSTATE_i[1] += MLC_Aero_Simulink2016a_P.Internal_B_p[1] *
-    MLC_Aero_Simulink2016a_B.Internal[0];
-
-  /* Derivatives for StateSpace: '<S5>/Internal' */
-  _rtXdot->Internal_CSTATE_j = 0.0;
-  _rtXdot->Internal_CSTATE_j += MLC_Aero_Simulink2016a_P.Internal_A_j5 *
-    MLC_Aero_Simulink2016a_X.Internal_CSTATE_j;
-  _rtXdot->Internal_CSTATE_j += MLC_Aero_Simulink2016a_P.Internal_B_g *
-    MLC_Aero_Simulink2016a_B.Internal_m;
-
-  /* Derivatives for StateSpace: '<S9>/Internal' */
-  _rtXdot->Internal_CSTATE_jy[0] = 0.0;
-  _rtXdot->Internal_CSTATE_jy[1] = 0.0;
-  _rtXdot->Internal_CSTATE_jy[0] += MLC_Aero_Simulink2016a_P.Internal_A_c[0] *
-    MLC_Aero_Simulink2016a_X.Internal_CSTATE_jy[0];
-  _rtXdot->Internal_CSTATE_jy[0] += MLC_Aero_Simulink2016a_P.Internal_A_c[1] *
-    MLC_Aero_Simulink2016a_X.Internal_CSTATE_jy[1];
-  _rtXdot->Internal_CSTATE_jy[1] += MLC_Aero_Simulink2016a_P.Internal_A_c[2] *
-    MLC_Aero_Simulink2016a_X.Internal_CSTATE_jy[0];
-  _rtXdot->Internal_CSTATE_jy[1] += MLC_Aero_Simulink2016a_P.Internal_A_c[3] *
-    MLC_Aero_Simulink2016a_X.Internal_CSTATE_jy[1];
-  _rtXdot->Internal_CSTATE_jy[0] += MLC_Aero_Simulink2016a_P.Internal_B_p2[0] *
-    MLC_Aero_Simulink2016a_B.Internal[1];
-  _rtXdot->Internal_CSTATE_jy[1] += MLC_Aero_Simulink2016a_P.Internal_B_p2[1] *
-    MLC_Aero_Simulink2016a_B.Internal[1];
-
-  /* Derivatives for StateSpace: '<S6>/Internal' */
-  _rtXdot->Internal_CSTATE_d = 0.0;
-  _rtXdot->Internal_CSTATE_d += MLC_Aero_Simulink2016a_P.Internal_A_e *
-    MLC_Aero_Simulink2016a_X.Internal_CSTATE_d;
-  _rtXdot->Internal_CSTATE_d += MLC_Aero_Simulink2016a_P.Internal_B_i *
-    MLC_Aero_Simulink2016a_B.Internal_o;
 }
 
 /* Model initialize function */
@@ -855,39 +777,32 @@ void MLC_Aero_Simulink2016a_initialize(void)
   MLC_Aero_Simulink2016a_DW.SwitchCase_ActiveSubsystem = -1;
 
   /* End of Start for SubSystem: '<S7>/Pitch Bias Removal' */
+  {
+    int_T is;
 
-  /* InitializeConditions for StateSpace: '<S1>/Internal' */
-  memset(&MLC_Aero_Simulink2016a_X.Internal_CSTATE[0], 0, sizeof(real_T) << 3U);
+    /* InitializeConditions for StateSpace: '<S1>/Internal' */
+    for (is = 0; is < 6; is++) {
+      MLC_Aero_Simulink2016a_X.Internal_CSTATE[is] = 0.0;
+    }
 
-  /* InitializeConditions for StateSpace: '<S8>/Internal' */
-  MLC_Aero_Simulink2016a_X.Internal_CSTATE_i[0] = 0.0;
-  MLC_Aero_Simulink2016a_X.Internal_CSTATE_i[1] = 0.0;
+    /* End of InitializeConditions for StateSpace: '<S1>/Internal' */
 
-  /* InitializeConditions for StateSpace: '<S5>/Internal' */
-  MLC_Aero_Simulink2016a_X.Internal_CSTATE_j = 0.0;
+    /* SystemInitialize for Atomic SubSystem: '<S7>/Pitch Bias Removal' */
+    /* SystemInitialize for Enabled SubSystem: '<S15>/Enabled Moving Average' */
+    /* InitializeConditions for UnitDelay: '<S21>/Unit Delay' */
+    MLC_Aero_Simulink2016a_DW.UnitDelay_DSTATE =
+      MLC_Aero_Simulink2016a_P.UnitDelay_InitialCondition;
 
-  /* InitializeConditions for StateSpace: '<S9>/Internal' */
-  MLC_Aero_Simulink2016a_X.Internal_CSTATE_jy[0] = 0.0;
-  MLC_Aero_Simulink2016a_X.Internal_CSTATE_jy[1] = 0.0;
+    /* InitializeConditions for UnitDelay: '<S17>/Sum( k=1,n-1, x(k) )' */
+    MLC_Aero_Simulink2016a_DW.Sumk1n1xk_DSTATE =
+      MLC_Aero_Simulink2016a_P.Sumk1n1xk_InitialCondition;
 
-  /* InitializeConditions for StateSpace: '<S6>/Internal' */
-  MLC_Aero_Simulink2016a_X.Internal_CSTATE_d = 0.0;
+    /* SystemInitialize for Outport: '<S17>/x_avg_n' */
+    MLC_Aero_Simulink2016a_B.div = MLC_Aero_Simulink2016a_P.x_avg_n_Y0;
 
-  /* SystemInitialize for Atomic SubSystem: '<S7>/Pitch Bias Removal' */
-  /* SystemInitialize for Enabled SubSystem: '<S15>/Enabled Moving Average' */
-  /* InitializeConditions for UnitDelay: '<S21>/Unit Delay' */
-  MLC_Aero_Simulink2016a_DW.UnitDelay_DSTATE =
-    MLC_Aero_Simulink2016a_P.UnitDelay_InitialCondition;
-
-  /* InitializeConditions for UnitDelay: '<S17>/Sum( k=1,n-1, x(k) )' */
-  MLC_Aero_Simulink2016a_DW.Sumk1n1xk_DSTATE =
-    MLC_Aero_Simulink2016a_P.Sumk1n1xk_InitialCondition;
-
-  /* SystemInitialize for Outport: '<S17>/x_avg_n' */
-  MLC_Aero_Simulink2016a_B.div = MLC_Aero_Simulink2016a_P.x_avg_n_Y0;
-
-  /* End of SystemInitialize for SubSystem: '<S15>/Enabled Moving Average' */
-  /* End of SystemInitialize for SubSystem: '<S7>/Pitch Bias Removal' */
+    /* End of SystemInitialize for SubSystem: '<S15>/Enabled Moving Average' */
+    /* End of SystemInitialize for SubSystem: '<S7>/Pitch Bias Removal' */
+  }
 }
 
 /* Model terminate function */
@@ -1144,10 +1059,10 @@ RT_MODEL_MLC_Aero_Simulink201_T *MLC_Aero_Simulink2016a(void)
   MLC_Aero_Simulink2016a_M->Timing.stepSize1 = 0.002;
 
   /* External mode info */
-  MLC_Aero_Simulink2016a_M->Sizes.checksums[0] = (2825639371U);
-  MLC_Aero_Simulink2016a_M->Sizes.checksums[1] = (883591836U);
-  MLC_Aero_Simulink2016a_M->Sizes.checksums[2] = (3010292674U);
-  MLC_Aero_Simulink2016a_M->Sizes.checksums[3] = (2173862250U);
+  MLC_Aero_Simulink2016a_M->Sizes.checksums[0] = (1789480781U);
+  MLC_Aero_Simulink2016a_M->Sizes.checksums[1] = (3550018737U);
+  MLC_Aero_Simulink2016a_M->Sizes.checksums[2] = (2204570898U);
+  MLC_Aero_Simulink2016a_M->Sizes.checksums[3] = (2217919794U);
 
   {
     static const sysRanDType rtAlwaysEnabled = SUBSYS_RAN_BC_ENABLE;
@@ -1223,15 +1138,15 @@ RT_MODEL_MLC_Aero_Simulink201_T *MLC_Aero_Simulink2016a(void)
   }
 
   /* Initialize Sizes */
-  MLC_Aero_Simulink2016a_M->Sizes.numContStates = (14);/* Number of continuous states */
+  MLC_Aero_Simulink2016a_M->Sizes.numContStates = (6);/* Number of continuous states */
   MLC_Aero_Simulink2016a_M->Sizes.numPeriodicContStates = (0);/* Number of periodic continuous states */
   MLC_Aero_Simulink2016a_M->Sizes.numY = (0);/* Number of model outputs */
   MLC_Aero_Simulink2016a_M->Sizes.numU = (0);/* Number of model inputs */
   MLC_Aero_Simulink2016a_M->Sizes.sysDirFeedThru = (0);/* The model is not direct feedthrough */
   MLC_Aero_Simulink2016a_M->Sizes.numSampTimes = (2);/* Number of sample times */
-  MLC_Aero_Simulink2016a_M->Sizes.numBlocks = (52);/* Number of blocks */
-  MLC_Aero_Simulink2016a_M->Sizes.numBlockIO = (16);/* Number of block outputs */
-  MLC_Aero_Simulink2016a_M->Sizes.numBlockPrms = (232);/* Sum of parameter "widths" */
+  MLC_Aero_Simulink2016a_M->Sizes.numBlocks = (48);/* Number of blocks */
+  MLC_Aero_Simulink2016a_M->Sizes.numBlockIO = (14);/* Number of block outputs */
+  MLC_Aero_Simulink2016a_M->Sizes.numBlockPrms = (186);/* Sum of parameter "widths" */
   return MLC_Aero_Simulink2016a_M;
 }
 
