@@ -18,9 +18,6 @@ K_l=minreal((1/(s/10+1))^2*(Ld));
 Km=-Ki
 K=balred(Km,6)
 
-%[Kinf,cl,gam,info] = ncfsyn(G_unc,K_l);
-%K = Kinf;
-%K=balred(K,6)
 
 %%
 D1=ultidyn('D1',[1 1]);
@@ -58,5 +55,23 @@ for i=1:10
 end
 xlabel('time(s)')
 ylabel('Angles(rad)')
+title('Pitch(red) and Yaw(blue) Responses for Hinf Loopshaping')
+
+
+figure()
+
+for i=1:10
+    Delta_1=Delta_1a(:,:,i,1)
+    Delta_2=Delta_2a(:,:,i,1)
+    simout=sim('prelim_plant')
+    time=motor_.Time(:,1)
+    pitch=angles.Data(:,1)
+    yaw=angles.Data(:,2)
+    plot(time,pitch,'r')
+    hold on
+    plot(time,yaw,'b')
+end
+xlabel('time(s)')
+ylabel('Volts(V)')
 title('Pitch(red) and Yaw(blue) Responses for Hinf Loopshaping')
 
