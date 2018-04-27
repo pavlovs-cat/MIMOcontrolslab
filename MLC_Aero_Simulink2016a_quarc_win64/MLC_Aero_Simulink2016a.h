@@ -7,9 +7,9 @@
  *
  * Code generation for model "MLC_Aero_Simulink2016a".
  *
- * Model version              : 1.102
+ * Model version              : 1.110
  * Simulink Coder version : 8.10 (R2016a) 10-Feb-2016
- * C source code generated on : Tue Apr 24 12:20:47 2018
+ * C source code generated on : Thu Apr 26 23:56:33 2018
  *
  * Target selection: quarc_win64.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -814,35 +814,33 @@
 
 /* Block signals (auto storage) */
 typedef struct {
+  real_T Internal[2];                  /* '<S1>/Internal' */
+  real_T MotorEnable[2];               /* '<S7>/Motor Enable' */
+  real_T Countstorads[2];              /* '<S7>/Counts to rads' */
+  real_T Sum;                          /* '<S7>/Sum' */
+  real_T TmpSignalConversionAtToWorkspac[2];
   real_T PitchReference;               /* '<Root>/Pitch Reference ' */
   real_T YawReference;                 /* '<Root>/Yaw Reference' */
-  real_T Countstorads[2];              /* '<S11>/Counts to rads' */
-  real_T Sum;                          /* '<S11>/Sum' */
   real_T Sum_a[2];                     /* '<Root>/Sum' */
-  real_T Sum1;                         /* '<S1>/Sum1' */
-  real_T Sum2;                         /* '<S1>/Sum2' */
-  real_T MotorEnable[2];               /* '<S11>/Motor Enable' */
-  real_T Internal;                     /* '<S12>/Internal' */
-  real_T Internal_o;                   /* '<S13>/Internal' */
-  real_T Stepend_time;                 /* '<S19>/Step: end_time' */
-  real_T Count;                        /* '<S25>/Count' */
-  real_T Sum_b;                        /* '<S21>/Sum' */
-  real_T div;                          /* '<S21>/div' */
+  real_T Stepend_time;                 /* '<S15>/Step: end_time' */
+  real_T Count;                        /* '<S21>/Count' */
+  real_T Sum_b;                        /* '<S17>/Sum' */
+  real_T div;                          /* '<S17>/div' */
 } B_MLC_Aero_Simulink2016a_T;
 
 /* Block states (auto storage) for system '<Root>' */
 typedef struct {
-  real_T UnitDelay_DSTATE;             /* '<S25>/Unit Delay' */
-  real_T Sumk1n1xk_DSTATE;             /* '<S21>/Sum( k=1,n-1, x(k) )' */
-  real_T HILInitialize_AIMinimums[2];  /* '<S11>/HIL Initialize' */
-  real_T HILInitialize_AIMaximums[2];  /* '<S11>/HIL Initialize' */
-  real_T HILInitialize_AOMinimums[2];  /* '<S11>/HIL Initialize' */
-  real_T HILInitialize_AOMaximums[2];  /* '<S11>/HIL Initialize' */
-  real_T HILInitialize_AOVoltages[2];  /* '<S11>/HIL Initialize' */
-  real_T HILInitialize_FilterFrequency[4];/* '<S11>/HIL Initialize' */
-  t_card HILInitialize_Card;           /* '<S11>/HIL Initialize' */
-  t_task HILReadTimebase_Task;         /* '<S11>/HIL Read Timebase' */
-  void *HILWrite_PWORK;                /* '<S11>/HIL Write' */
+  real_T UnitDelay_DSTATE;             /* '<S21>/Unit Delay' */
+  real_T Sumk1n1xk_DSTATE;             /* '<S17>/Sum( k=1,n-1, x(k) )' */
+  real_T HILInitialize_AIMinimums[2];  /* '<S7>/HIL Initialize' */
+  real_T HILInitialize_AIMaximums[2];  /* '<S7>/HIL Initialize' */
+  real_T HILInitialize_AOMinimums[2];  /* '<S7>/HIL Initialize' */
+  real_T HILInitialize_AOMaximums[2];  /* '<S7>/HIL Initialize' */
+  real_T HILInitialize_AOVoltages[2];  /* '<S7>/HIL Initialize' */
+  real_T HILInitialize_FilterFrequency[4];/* '<S7>/HIL Initialize' */
+  t_card HILInitialize_Card;           /* '<S7>/HIL Initialize' */
+  t_task HILReadTimebase_Task;         /* '<S7>/HIL Read Timebase' */
+  void *HILWrite_PWORK;                /* '<S7>/HIL Write' */
   struct {
     void *LoggedData;
   } Angles_PWORK;                      /* '<Root>/Angles' */
@@ -863,55 +861,42 @@ typedef struct {
     void *LoggedData[2];
   } Scope1_PWORK;                      /* '<Root>/Scope1' */
 
-  int32_T HILInitialize_ClockModes;    /* '<S11>/HIL Initialize' */
-  int32_T HILInitialize_AIConfigValues[2];/* '<S11>/HIL Initialize' */
-  int32_T HILInitialize_DOStates[2];   /* '<S11>/HIL Initialize' */
-  int32_T HILInitialize_QuadratureModes[4];/* '<S11>/HIL Initialize' */
-  int32_T HILInitialize_InitialEICounts[4];/* '<S11>/HIL Initialize' */
-  int32_T HILReadTimebase_EncoderBuffer[2];/* '<S11>/HIL Read Timebase' */
-  int8_T EnabledMovingAverage_SubsysRanB;/* '<S19>/Enabled Moving Average' */
-  int8_T SwitchCase_ActiveSubsystem;   /* '<S19>/Switch Case' */
-  int8_T SwitchCaseActionSubsystem_Subsy;/* '<S19>/Switch Case Action Subsystem' */
-  int8_T SwitchCaseActionSubsystem1_Subs;/* '<S19>/Switch Case Action Subsystem1' */
-  int8_T SwitchCaseActionSubsystem2_Subs;/* '<S19>/Switch Case Action Subsystem2' */
-  boolean_T HILInitialize_DOBits[2];   /* '<S11>/HIL Initialize' */
-  boolean_T EnabledMovingAverage_MODE; /* '<S19>/Enabled Moving Average' */
+  struct {
+    void *LoggedData;
+  } ToWorkspace_PWORK;                 /* '<Root>/To Workspace' */
+
+  struct {
+    void *LoggedData;
+  } ToWorkspace1_PWORK;                /* '<Root>/To Workspace1' */
+
+  int32_T HILInitialize_ClockModes;    /* '<S7>/HIL Initialize' */
+  int32_T HILInitialize_AIConfigValues[2];/* '<S7>/HIL Initialize' */
+  int32_T HILInitialize_DOStates[2];   /* '<S7>/HIL Initialize' */
+  int32_T HILInitialize_QuadratureModes[4];/* '<S7>/HIL Initialize' */
+  int32_T HILInitialize_InitialEICounts[4];/* '<S7>/HIL Initialize' */
+  int32_T HILReadTimebase_EncoderBuffer[2];/* '<S7>/HIL Read Timebase' */
+  int8_T EnabledMovingAverage_SubsysRanB;/* '<S15>/Enabled Moving Average' */
+  int8_T SwitchCase_ActiveSubsystem;   /* '<S15>/Switch Case' */
+  int8_T SwitchCaseActionSubsystem_Subsy;/* '<S15>/Switch Case Action Subsystem' */
+  int8_T SwitchCaseActionSubsystem1_Subs;/* '<S15>/Switch Case Action Subsystem1' */
+  int8_T SwitchCaseActionSubsystem2_Subs;/* '<S15>/Switch Case Action Subsystem2' */
+  boolean_T HILInitialize_DOBits[2];   /* '<S7>/HIL Initialize' */
+  boolean_T EnabledMovingAverage_MODE; /* '<S15>/Enabled Moving Average' */
 } DW_MLC_Aero_Simulink2016a_T;
 
 /* Continuous states (auto storage) */
 typedef struct {
-  real_T Internal_1_1_CSTATE;          /* '<S1>/Internal_1_1' */
-  real_T Internal_1_2_CSTATE;          /* '<S1>/Internal_1_2' */
-  real_T Internal_CSTATE[6];           /* '<S9>/Internal' */
-  real_T Internal_2_1_CSTATE;          /* '<S1>/Internal_2_1' */
-  real_T Internal_2_2_CSTATE;          /* '<S1>/Internal_2_2' */
-  real_T Internal_CSTATE_d[6];         /* '<S10>/Internal' */
-  real_T Internal_CSTATE_i[4];         /* '<S12>/Internal' */
-  real_T Internal_CSTATE_j[4];         /* '<S13>/Internal' */
+  real_T Internal_CSTATE[6];           /* '<S1>/Internal' */
 } X_MLC_Aero_Simulink2016a_T;
 
 /* State derivatives (auto storage) */
 typedef struct {
-  real_T Internal_1_1_CSTATE;          /* '<S1>/Internal_1_1' */
-  real_T Internal_1_2_CSTATE;          /* '<S1>/Internal_1_2' */
-  real_T Internal_CSTATE[6];           /* '<S9>/Internal' */
-  real_T Internal_2_1_CSTATE;          /* '<S1>/Internal_2_1' */
-  real_T Internal_2_2_CSTATE;          /* '<S1>/Internal_2_2' */
-  real_T Internal_CSTATE_d[6];         /* '<S10>/Internal' */
-  real_T Internal_CSTATE_i[4];         /* '<S12>/Internal' */
-  real_T Internal_CSTATE_j[4];         /* '<S13>/Internal' */
+  real_T Internal_CSTATE[6];           /* '<S1>/Internal' */
 } XDot_MLC_Aero_Simulink2016a_T;
 
 /* State disabled  */
 typedef struct {
-  boolean_T Internal_1_1_CSTATE;       /* '<S1>/Internal_1_1' */
-  boolean_T Internal_1_2_CSTATE;       /* '<S1>/Internal_1_2' */
-  boolean_T Internal_CSTATE[6];        /* '<S9>/Internal' */
-  boolean_T Internal_2_1_CSTATE;       /* '<S1>/Internal_2_1' */
-  boolean_T Internal_2_2_CSTATE;       /* '<S1>/Internal_2_2' */
-  boolean_T Internal_CSTATE_d[6];      /* '<S10>/Internal' */
-  boolean_T Internal_CSTATE_i[4];      /* '<S12>/Internal' */
-  boolean_T Internal_CSTATE_j[4];      /* '<S13>/Internal' */
+  boolean_T Internal_CSTATE[6];        /* '<S1>/Internal' */
 } XDis_MLC_Aero_Simulink2016a_T;
 
 #ifndef ODE1_INTG
@@ -941,121 +926,142 @@ typedef struct {
 /* Parameters (auto storage) */
 struct P_MLC_Aero_Simulink2016a_T_ {
   real_T Green_color[3];               /* Mask Parameter: Green_color
-                                        * Referenced by: '<S18>/Constant'
+                                        * Referenced by: '<S14>/Constant'
                                         */
   real_T Yellow_color[3];              /* Mask Parameter: Yellow_color
-                                        * Referenced by: '<S20>/Constant'
+                                        * Referenced by: '<S16>/Constant'
                                         */
   real_T PitchBiasRemoval_end_time;    /* Mask Parameter: PitchBiasRemoval_end_time
-                                        * Referenced by: '<S19>/Step: end_time'
+                                        * Referenced by: '<S15>/Step: end_time'
                                         */
   real_T PitchBiasRemoval_start_time;  /* Mask Parameter: PitchBiasRemoval_start_time
-                                        * Referenced by: '<S19>/Step: start_time'
+                                        * Referenced by: '<S15>/Step: start_time'
                                         */
   real_T PitchBiasRemoval_switch_id;   /* Mask Parameter: PitchBiasRemoval_switch_id
-                                        * Referenced by: '<S19>/Constant'
+                                        * Referenced by: '<S15>/Constant'
                                         */
   int32_T HILReadTimebase_clock;       /* Mask Parameter: HILReadTimebase_clock
-                                        * Referenced by: '<S11>/HIL Read Timebase'
+                                        * Referenced by: '<S7>/HIL Read Timebase'
                                         */
   uint32_T HILReadTimebase_analog_channels[2];/* Mask Parameter: HILReadTimebase_analog_channels
-                                               * Referenced by: '<S11>/HIL Read Timebase'
+                                               * Referenced by: '<S7>/HIL Read Timebase'
                                                */
   uint32_T HILWrite_analog_channels[2];/* Mask Parameter: HILWrite_analog_channels
-                                        * Referenced by: '<S11>/HIL Write'
+                                        * Referenced by: '<S7>/HIL Write'
                                         */
   uint32_T HILReadTimebase_encoder_channel[2];/* Mask Parameter: HILReadTimebase_encoder_channel
-                                               * Referenced by: '<S11>/HIL Read Timebase'
+                                               * Referenced by: '<S7>/HIL Read Timebase'
                                                */
   uint32_T HILReadTimebase_other_channels[4];/* Mask Parameter: HILReadTimebase_other_channels
-                                              * Referenced by: '<S11>/HIL Read Timebase'
+                                              * Referenced by: '<S7>/HIL Read Timebase'
                                               */
   uint32_T HILWrite_other_channels[3]; /* Mask Parameter: HILWrite_other_channels
-                                        * Referenced by: '<S11>/HIL Write'
+                                        * Referenced by: '<S7>/HIL Write'
                                         */
   uint32_T HILReadTimebase_samples_in_buff;/* Mask Parameter: HILReadTimebase_samples_in_buff
-                                            * Referenced by: '<S11>/HIL Read Timebase'
+                                            * Referenced by: '<S7>/HIL Read Timebase'
                                             */
   real_T u4V_UpperSat;                 /* Expression: 24
-                                        * Referenced by: '<S11>/+//- 24V'
+                                        * Referenced by: '<S7>/+//- 24V'
                                         */
   real_T u4V_LowerSat;                 /* Expression: -24
-                                        * Referenced by: '<S11>/+//- 24V'
+                                        * Referenced by: '<S7>/+//- 24V'
                                         */
   real_T x_avg_n_Y0;                   /* Computed Parameter: x_avg_n_Y0
-                                        * Referenced by: '<S21>/x_avg_n'
+                                        * Referenced by: '<S17>/x_avg_n'
                                         */
   real_T unity_Value;                  /* Expression: 1
-                                        * Referenced by: '<S25>/unity'
+                                        * Referenced by: '<S21>/unity'
                                         */
   real_T UnitDelay_InitialCondition;   /* Expression: 0
-                                        * Referenced by: '<S25>/Unit Delay'
+                                        * Referenced by: '<S21>/Unit Delay'
                                         */
   real_T Sumk1n1xk_InitialCondition;   /* Expression: 0
-                                        * Referenced by: '<S21>/Sum( k=1,n-1, x(k) )'
+                                        * Referenced by: '<S17>/Sum( k=1,n-1, x(k) )'
                                         */
   real_T zero_Y0;                      /* Expression: [0]
-                                        * Referenced by: '<S22>/zero'
+                                        * Referenced by: '<S18>/zero'
                                         */
   real_T Vbiased_Y0;                   /* Expression: [0]
-                                        * Referenced by: '<S23>/Vbiased'
+                                        * Referenced by: '<S19>/Vbiased'
                                         */
   real_T Vunbiased_Y0;                 /* Expression: [0]
-                                        * Referenced by: '<S24>/Vunbiased'
+                                        * Referenced by: '<S20>/Vunbiased'
                                         */
   real_T Stepstart_time_Y0;            /* Expression: 0
-                                        * Referenced by: '<S19>/Step: start_time'
+                                        * Referenced by: '<S15>/Step: start_time'
                                         */
   real_T Stepstart_time_YFinal;        /* Expression: 1
-                                        * Referenced by: '<S19>/Step: start_time'
+                                        * Referenced by: '<S15>/Step: start_time'
                                         */
   real_T Stepend_time_Y0;              /* Expression: 0
-                                        * Referenced by: '<S19>/Step: end_time'
+                                        * Referenced by: '<S15>/Step: end_time'
                                         */
   real_T Stepend_time_YFinal;          /* Expression: 1
-                                        * Referenced by: '<S19>/Step: end_time'
+                                        * Referenced by: '<S15>/Step: end_time'
                                         */
   real_T HILInitialize_OOTerminate;    /* Expression: set_other_outputs_at_terminate
-                                        * Referenced by: '<S11>/HIL Initialize'
+                                        * Referenced by: '<S7>/HIL Initialize'
                                         */
   real_T HILInitialize_OOExit;         /* Expression: set_other_outputs_at_switch_out
-                                        * Referenced by: '<S11>/HIL Initialize'
+                                        * Referenced by: '<S7>/HIL Initialize'
                                         */
   real_T HILInitialize_OOStart;        /* Expression: set_other_outputs_at_start
-                                        * Referenced by: '<S11>/HIL Initialize'
+                                        * Referenced by: '<S7>/HIL Initialize'
                                         */
   real_T HILInitialize_OOEnter;        /* Expression: set_other_outputs_at_switch_in
-                                        * Referenced by: '<S11>/HIL Initialize'
+                                        * Referenced by: '<S7>/HIL Initialize'
                                         */
   real_T HILInitialize_AOFinal;        /* Expression: final_analog_outputs
-                                        * Referenced by: '<S11>/HIL Initialize'
+                                        * Referenced by: '<S7>/HIL Initialize'
                                         */
   real_T HILInitialize_OOFinal[3];     /* Expression: final_other_outputs
-                                        * Referenced by: '<S11>/HIL Initialize'
+                                        * Referenced by: '<S7>/HIL Initialize'
                                         */
   real_T HILInitialize_AIHigh;         /* Expression: analog_input_maximums
-                                        * Referenced by: '<S11>/HIL Initialize'
+                                        * Referenced by: '<S7>/HIL Initialize'
                                         */
   real_T HILInitialize_AILow;          /* Expression: analog_input_minimums
-                                        * Referenced by: '<S11>/HIL Initialize'
+                                        * Referenced by: '<S7>/HIL Initialize'
                                         */
   real_T HILInitialize_AOHigh;         /* Expression: analog_output_maximums
-                                        * Referenced by: '<S11>/HIL Initialize'
+                                        * Referenced by: '<S7>/HIL Initialize'
                                         */
   real_T HILInitialize_AOLow;          /* Expression: analog_output_minimums
-                                        * Referenced by: '<S11>/HIL Initialize'
+                                        * Referenced by: '<S7>/HIL Initialize'
                                         */
   real_T HILInitialize_AOInitial;      /* Expression: initial_analog_outputs
-                                        * Referenced by: '<S11>/HIL Initialize'
+                                        * Referenced by: '<S7>/HIL Initialize'
                                         */
   real_T HILInitialize_AOWatchdog;     /* Expression: watchdog_analog_outputs
-                                        * Referenced by: '<S11>/HIL Initialize'
+                                        * Referenced by: '<S7>/HIL Initialize'
                                         */
   real_T HILInitialize_OOInitial[3];   /* Expression: initial_other_outputs
-                                        * Referenced by: '<S11>/HIL Initialize'
+                                        * Referenced by: '<S7>/HIL Initialize'
                                         */
   real_T HILInitialize_OOWatchdog[3];  /* Expression: watchdog_other_outputs
-                                        * Referenced by: '<S11>/HIL Initialize'
+                                        * Referenced by: '<S7>/HIL Initialize'
+                                        */
+  real_T Internal_A[20];               /* Computed Parameter: Internal_A
+                                        * Referenced by: '<S1>/Internal'
+                                        */
+  real_T Internal_B[2];                /* Computed Parameter: Internal_B
+                                        * Referenced by: '<S1>/Internal'
+                                        */
+  real_T Internal_C[12];               /* Computed Parameter: Internal_C
+                                        * Referenced by: '<S1>/Internal'
+                                        */
+  real_T NoControl_Value[2];           /* Expression: [0 0]
+                                        * Referenced by: '<S7>/No Control'
+                                        */
+  real_T MotorEnable_Threshold;        /* Expression: 0
+                                        * Referenced by: '<S7>/Motor Enable'
+                                        */
+  real_T LEDColour_Threshold;          /* Expression: 0
+                                        * Referenced by: '<S7>/LED Colour'
+                                        */
+  real_T Countstorads_Gain[2];         /* Expression: [2*pi/2048 2*pi/4096]
+                                        * Referenced by: '<S7>/Counts to rads'
                                         */
   real_T PitchReference_Amplitude;     /* Expression: pi/6
                                         * Referenced by: '<Root>/Pitch Reference '
@@ -1069,260 +1075,146 @@ struct P_MLC_Aero_Simulink2016a_T_ {
   real_T YawReference_Frequency;       /* Computed Parameter: YawReference_Frequency
                                         * Referenced by: '<Root>/Yaw Reference'
                                         */
-  real_T Countstorads_Gain[2];         /* Expression: [2*pi/2048 2*pi/4096]
-                                        * Referenced by: '<S11>/Counts to rads'
-                                        */
-  real_T Internal_1_1_A;               /* Computed Parameter: Internal_1_1_A
-                                        * Referenced by: '<S1>/Internal_1_1'
-                                        */
-  real_T Internal_1_1_B;               /* Computed Parameter: Internal_1_1_B
-                                        * Referenced by: '<S1>/Internal_1_1'
-                                        */
-  real_T Internal_1_1_C;               /* Computed Parameter: Internal_1_1_C
-                                        * Referenced by: '<S1>/Internal_1_1'
-                                        */
-  real_T Internal_1_1_D;               /* Computed Parameter: Internal_1_1_D
-                                        * Referenced by: '<S1>/Internal_1_1'
-                                        */
-  real_T Internal_1_1_X0;              /* Expression: 0.0
-                                        * Referenced by: '<S1>/Internal_1_1'
-                                        */
-  real_T Internal_1_2_A;               /* Computed Parameter: Internal_1_2_A
-                                        * Referenced by: '<S1>/Internal_1_2'
-                                        */
-  real_T Internal_1_2_B;               /* Computed Parameter: Internal_1_2_B
-                                        * Referenced by: '<S1>/Internal_1_2'
-                                        */
-  real_T Internal_1_2_C;               /* Computed Parameter: Internal_1_2_C
-                                        * Referenced by: '<S1>/Internal_1_2'
-                                        */
-  real_T Internal_1_2_D;               /* Computed Parameter: Internal_1_2_D
-                                        * Referenced by: '<S1>/Internal_1_2'
-                                        */
-  real_T Internal_1_2_X0;              /* Expression: 0.0
-                                        * Referenced by: '<S1>/Internal_1_2'
-                                        */
-  real_T Internal_A[36];               /* Computed Parameter: Internal_A
-                                        * Referenced by: '<S9>/Internal'
-                                        */
-  real_T Internal_B[6];                /* Computed Parameter: Internal_B
-                                        * Referenced by: '<S9>/Internal'
-                                        */
-  real_T Internal_C[5];                /* Computed Parameter: Internal_C
-                                        * Referenced by: '<S9>/Internal'
-                                        */
-  real_T Internal_2_1_A;               /* Computed Parameter: Internal_2_1_A
-                                        * Referenced by: '<S1>/Internal_2_1'
-                                        */
-  real_T Internal_2_1_B;               /* Computed Parameter: Internal_2_1_B
-                                        * Referenced by: '<S1>/Internal_2_1'
-                                        */
-  real_T Internal_2_1_C;               /* Computed Parameter: Internal_2_1_C
-                                        * Referenced by: '<S1>/Internal_2_1'
-                                        */
-  real_T Internal_2_1_D;               /* Computed Parameter: Internal_2_1_D
-                                        * Referenced by: '<S1>/Internal_2_1'
-                                        */
-  real_T Internal_2_1_X0;              /* Expression: 0.0
-                                        * Referenced by: '<S1>/Internal_2_1'
-                                        */
-  real_T Internal_2_2_A;               /* Computed Parameter: Internal_2_2_A
-                                        * Referenced by: '<S1>/Internal_2_2'
-                                        */
-  real_T Internal_2_2_B;               /* Computed Parameter: Internal_2_2_B
-                                        * Referenced by: '<S1>/Internal_2_2'
-                                        */
-  real_T Internal_2_2_C;               /* Computed Parameter: Internal_2_2_C
-                                        * Referenced by: '<S1>/Internal_2_2'
-                                        */
-  real_T Internal_2_2_D;               /* Computed Parameter: Internal_2_2_D
-                                        * Referenced by: '<S1>/Internal_2_2'
-                                        */
-  real_T Internal_2_2_X0;              /* Expression: 0.0
-                                        * Referenced by: '<S1>/Internal_2_2'
-                                        */
-  real_T Internal_A_e[27];             /* Computed Parameter: Internal_A_e
-                                        * Referenced by: '<S10>/Internal'
-                                        */
-  real_T Internal_B_i[6];              /* Computed Parameter: Internal_B_i
-                                        * Referenced by: '<S10>/Internal'
-                                        */
-  real_T Internal_C_k[2];              /* Computed Parameter: Internal_C_k
-                                        * Referenced by: '<S10>/Internal'
-                                        */
-  real_T NoControl_Value[2];           /* Expression: [0 0]
-                                        * Referenced by: '<S11>/No Control'
-                                        */
-  real_T MotorEnable_Threshold;        /* Expression: 0
-                                        * Referenced by: '<S11>/Motor Enable'
-                                        */
-  real_T LEDColour_Threshold;          /* Expression: 0
-                                        * Referenced by: '<S11>/LED Colour'
-                                        */
-  real_T Internal_A_j[8];              /* Computed Parameter: Internal_A_j
-                                        * Referenced by: '<S12>/Internal'
-                                        */
-  real_T Internal_B_p[2];              /* Computed Parameter: Internal_B_p
-                                        * Referenced by: '<S12>/Internal'
-                                        */
-  real_T Internal_C_f[2];              /* Computed Parameter: Internal_C_f
-                                        * Referenced by: '<S12>/Internal'
-                                        */
-  real_T Internal_D;                   /* Computed Parameter: Internal_D
-                                        * Referenced by: '<S12>/Internal'
-                                        */
-  real_T Internal_A_c[8];              /* Computed Parameter: Internal_A_c
-                                        * Referenced by: '<S13>/Internal'
-                                        */
-  real_T Internal_B_p2[2];             /* Computed Parameter: Internal_B_p2
-                                        * Referenced by: '<S13>/Internal'
-                                        */
-  real_T Internal_C_n[2];              /* Computed Parameter: Internal_C_n
-                                        * Referenced by: '<S13>/Internal'
-                                        */
-  real_T Internal_D_f;                 /* Computed Parameter: Internal_D_f
-                                        * Referenced by: '<S13>/Internal'
-                                        */
   int32_T HILInitialize_CKChannels;    /* Computed Parameter: HILInitialize_CKChannels
-                                        * Referenced by: '<S11>/HIL Initialize'
+                                        * Referenced by: '<S7>/HIL Initialize'
                                         */
   int32_T HILInitialize_AIConfiguration;/* Computed Parameter: HILInitialize_AIConfiguration
-                                         * Referenced by: '<S11>/HIL Initialize'
+                                         * Referenced by: '<S7>/HIL Initialize'
                                          */
   int32_T HILInitialize_DOWatchdog;    /* Computed Parameter: HILInitialize_DOWatchdog
-                                        * Referenced by: '<S11>/HIL Initialize'
+                                        * Referenced by: '<S7>/HIL Initialize'
                                         */
   int32_T HILInitialize_EIInitial;     /* Computed Parameter: HILInitialize_EIInitial
-                                        * Referenced by: '<S11>/HIL Initialize'
+                                        * Referenced by: '<S7>/HIL Initialize'
                                         */
   uint32_T HILInitialize_AIChannels[2];/* Computed Parameter: HILInitialize_AIChannels
-                                        * Referenced by: '<S11>/HIL Initialize'
+                                        * Referenced by: '<S7>/HIL Initialize'
                                         */
   uint32_T HILInitialize_AOChannels[2];/* Computed Parameter: HILInitialize_AOChannels
-                                        * Referenced by: '<S11>/HIL Initialize'
+                                        * Referenced by: '<S7>/HIL Initialize'
                                         */
   uint32_T HILInitialize_DOChannels[2];/* Computed Parameter: HILInitialize_DOChannels
-                                        * Referenced by: '<S11>/HIL Initialize'
+                                        * Referenced by: '<S7>/HIL Initialize'
                                         */
   uint32_T HILInitialize_EIChannels[4];/* Computed Parameter: HILInitialize_EIChannels
-                                        * Referenced by: '<S11>/HIL Initialize'
+                                        * Referenced by: '<S7>/HIL Initialize'
                                         */
   uint32_T HILInitialize_EIQuadrature; /* Computed Parameter: HILInitialize_EIQuadrature
-                                        * Referenced by: '<S11>/HIL Initialize'
+                                        * Referenced by: '<S7>/HIL Initialize'
                                         */
   uint32_T HILInitialize_OOChannels[3];/* Computed Parameter: HILInitialize_OOChannels
-                                        * Referenced by: '<S11>/HIL Initialize'
+                                        * Referenced by: '<S7>/HIL Initialize'
                                         */
   boolean_T HILInitialize_Active;      /* Computed Parameter: HILInitialize_Active
-                                        * Referenced by: '<S11>/HIL Initialize'
+                                        * Referenced by: '<S7>/HIL Initialize'
                                         */
   boolean_T HILInitialize_AOTerminate; /* Computed Parameter: HILInitialize_AOTerminate
-                                        * Referenced by: '<S11>/HIL Initialize'
+                                        * Referenced by: '<S7>/HIL Initialize'
                                         */
   boolean_T HILInitialize_AOExit;      /* Computed Parameter: HILInitialize_AOExit
-                                        * Referenced by: '<S11>/HIL Initialize'
+                                        * Referenced by: '<S7>/HIL Initialize'
                                         */
   boolean_T HILInitialize_DOTerminate; /* Computed Parameter: HILInitialize_DOTerminate
-                                        * Referenced by: '<S11>/HIL Initialize'
+                                        * Referenced by: '<S7>/HIL Initialize'
                                         */
   boolean_T HILInitialize_DOExit;      /* Computed Parameter: HILInitialize_DOExit
-                                        * Referenced by: '<S11>/HIL Initialize'
+                                        * Referenced by: '<S7>/HIL Initialize'
                                         */
   boolean_T HILInitialize_POTerminate; /* Computed Parameter: HILInitialize_POTerminate
-                                        * Referenced by: '<S11>/HIL Initialize'
+                                        * Referenced by: '<S7>/HIL Initialize'
                                         */
   boolean_T HILInitialize_POExit;      /* Computed Parameter: HILInitialize_POExit
-                                        * Referenced by: '<S11>/HIL Initialize'
+                                        * Referenced by: '<S7>/HIL Initialize'
                                         */
   boolean_T HILInitialize_CKPStart;    /* Computed Parameter: HILInitialize_CKPStart
-                                        * Referenced by: '<S11>/HIL Initialize'
+                                        * Referenced by: '<S7>/HIL Initialize'
                                         */
   boolean_T HILInitialize_CKPEnter;    /* Computed Parameter: HILInitialize_CKPEnter
-                                        * Referenced by: '<S11>/HIL Initialize'
+                                        * Referenced by: '<S7>/HIL Initialize'
                                         */
   boolean_T HILInitialize_CKStart;     /* Computed Parameter: HILInitialize_CKStart
-                                        * Referenced by: '<S11>/HIL Initialize'
+                                        * Referenced by: '<S7>/HIL Initialize'
                                         */
   boolean_T HILInitialize_CKEnter;     /* Computed Parameter: HILInitialize_CKEnter
-                                        * Referenced by: '<S11>/HIL Initialize'
+                                        * Referenced by: '<S7>/HIL Initialize'
                                         */
   boolean_T HILInitialize_AIPStart;    /* Computed Parameter: HILInitialize_AIPStart
-                                        * Referenced by: '<S11>/HIL Initialize'
+                                        * Referenced by: '<S7>/HIL Initialize'
                                         */
   boolean_T HILInitialize_AIPEnter;    /* Computed Parameter: HILInitialize_AIPEnter
-                                        * Referenced by: '<S11>/HIL Initialize'
+                                        * Referenced by: '<S7>/HIL Initialize'
                                         */
   boolean_T HILInitialize_AOPStart;    /* Computed Parameter: HILInitialize_AOPStart
-                                        * Referenced by: '<S11>/HIL Initialize'
+                                        * Referenced by: '<S7>/HIL Initialize'
                                         */
   boolean_T HILInitialize_AOPEnter;    /* Computed Parameter: HILInitialize_AOPEnter
-                                        * Referenced by: '<S11>/HIL Initialize'
+                                        * Referenced by: '<S7>/HIL Initialize'
                                         */
   boolean_T HILInitialize_AOStart;     /* Computed Parameter: HILInitialize_AOStart
-                                        * Referenced by: '<S11>/HIL Initialize'
+                                        * Referenced by: '<S7>/HIL Initialize'
                                         */
   boolean_T HILInitialize_AOEnter;     /* Computed Parameter: HILInitialize_AOEnter
-                                        * Referenced by: '<S11>/HIL Initialize'
+                                        * Referenced by: '<S7>/HIL Initialize'
                                         */
   boolean_T HILInitialize_AOReset;     /* Computed Parameter: HILInitialize_AOReset
-                                        * Referenced by: '<S11>/HIL Initialize'
+                                        * Referenced by: '<S7>/HIL Initialize'
                                         */
   boolean_T HILInitialize_DOPStart;    /* Computed Parameter: HILInitialize_DOPStart
-                                        * Referenced by: '<S11>/HIL Initialize'
+                                        * Referenced by: '<S7>/HIL Initialize'
                                         */
   boolean_T HILInitialize_DOPEnter;    /* Computed Parameter: HILInitialize_DOPEnter
-                                        * Referenced by: '<S11>/HIL Initialize'
+                                        * Referenced by: '<S7>/HIL Initialize'
                                         */
   boolean_T HILInitialize_DOStart;     /* Computed Parameter: HILInitialize_DOStart
-                                        * Referenced by: '<S11>/HIL Initialize'
+                                        * Referenced by: '<S7>/HIL Initialize'
                                         */
   boolean_T HILInitialize_DOEnter;     /* Computed Parameter: HILInitialize_DOEnter
-                                        * Referenced by: '<S11>/HIL Initialize'
+                                        * Referenced by: '<S7>/HIL Initialize'
                                         */
   boolean_T HILInitialize_DOReset;     /* Computed Parameter: HILInitialize_DOReset
-                                        * Referenced by: '<S11>/HIL Initialize'
+                                        * Referenced by: '<S7>/HIL Initialize'
                                         */
   boolean_T HILInitialize_EIPStart;    /* Computed Parameter: HILInitialize_EIPStart
-                                        * Referenced by: '<S11>/HIL Initialize'
+                                        * Referenced by: '<S7>/HIL Initialize'
                                         */
   boolean_T HILInitialize_EIPEnter;    /* Computed Parameter: HILInitialize_EIPEnter
-                                        * Referenced by: '<S11>/HIL Initialize'
+                                        * Referenced by: '<S7>/HIL Initialize'
                                         */
   boolean_T HILInitialize_EIStart;     /* Computed Parameter: HILInitialize_EIStart
-                                        * Referenced by: '<S11>/HIL Initialize'
+                                        * Referenced by: '<S7>/HIL Initialize'
                                         */
   boolean_T HILInitialize_EIEnter;     /* Computed Parameter: HILInitialize_EIEnter
-                                        * Referenced by: '<S11>/HIL Initialize'
+                                        * Referenced by: '<S7>/HIL Initialize'
                                         */
   boolean_T HILInitialize_POPStart;    /* Computed Parameter: HILInitialize_POPStart
-                                        * Referenced by: '<S11>/HIL Initialize'
+                                        * Referenced by: '<S7>/HIL Initialize'
                                         */
   boolean_T HILInitialize_POPEnter;    /* Computed Parameter: HILInitialize_POPEnter
-                                        * Referenced by: '<S11>/HIL Initialize'
+                                        * Referenced by: '<S7>/HIL Initialize'
                                         */
   boolean_T HILInitialize_POStart;     /* Computed Parameter: HILInitialize_POStart
-                                        * Referenced by: '<S11>/HIL Initialize'
+                                        * Referenced by: '<S7>/HIL Initialize'
                                         */
   boolean_T HILInitialize_POEnter;     /* Computed Parameter: HILInitialize_POEnter
-                                        * Referenced by: '<S11>/HIL Initialize'
+                                        * Referenced by: '<S7>/HIL Initialize'
                                         */
   boolean_T HILInitialize_POReset;     /* Computed Parameter: HILInitialize_POReset
-                                        * Referenced by: '<S11>/HIL Initialize'
+                                        * Referenced by: '<S7>/HIL Initialize'
                                         */
   boolean_T HILInitialize_OOReset;     /* Computed Parameter: HILInitialize_OOReset
-                                        * Referenced by: '<S11>/HIL Initialize'
+                                        * Referenced by: '<S7>/HIL Initialize'
                                         */
   boolean_T HILInitialize_DOFinal;     /* Computed Parameter: HILInitialize_DOFinal
-                                        * Referenced by: '<S11>/HIL Initialize'
+                                        * Referenced by: '<S7>/HIL Initialize'
                                         */
   boolean_T HILInitialize_DOInitial;   /* Computed Parameter: HILInitialize_DOInitial
-                                        * Referenced by: '<S11>/HIL Initialize'
+                                        * Referenced by: '<S7>/HIL Initialize'
                                         */
   boolean_T HILReadTimebase_Active;    /* Computed Parameter: HILReadTimebase_Active
-                                        * Referenced by: '<S11>/HIL Read Timebase'
+                                        * Referenced by: '<S7>/HIL Read Timebase'
                                         */
   boolean_T HILWrite_Active;           /* Computed Parameter: HILWrite_Active
-                                        * Referenced by: '<S11>/HIL Write'
+                                        * Referenced by: '<S7>/HIL Write'
                                         */
 };
 
@@ -1359,7 +1251,7 @@ struct tag_RTM_MLC_Aero_Simulink2016_T {
     boolean_T zCCacheNeedsReset;
     boolean_T derivCacheNeedsReset;
     boolean_T blkStateChange;
-    real_T odeF[1][24];
+    real_T odeF[1][6];
     ODE1_IntgData intgData;
     void *dwork;
   } ModelData;
@@ -1486,32 +1378,28 @@ extern RT_MODEL_MLC_Aero_Simulink201_T *const MLC_Aero_Simulink2016a_M;
  * '<Root>' : 'MLC_Aero_Simulink2016a'
  * '<S1>'   : 'MLC_Aero_Simulink2016a/Controller'
  * '<S2>'   : 'MLC_Aero_Simulink2016a/Uncertain Plant'
- * '<S3>'   : 'MLC_Aero_Simulink2016a/Controller/IO Delay_1_1'
- * '<S4>'   : 'MLC_Aero_Simulink2016a/Controller/IO Delay_1_2'
- * '<S5>'   : 'MLC_Aero_Simulink2016a/Controller/IO Delay_2_1'
- * '<S6>'   : 'MLC_Aero_Simulink2016a/Controller/IO Delay_2_2'
- * '<S7>'   : 'MLC_Aero_Simulink2016a/Controller/Input Delay'
- * '<S8>'   : 'MLC_Aero_Simulink2016a/Controller/Output Delay'
- * '<S9>'   : 'MLC_Aero_Simulink2016a/Uncertain Plant/Delta_1'
- * '<S10>'  : 'MLC_Aero_Simulink2016a/Uncertain Plant/Delta_2'
- * '<S11>'  : 'MLC_Aero_Simulink2016a/Uncertain Plant/Plant'
- * '<S12>'  : 'MLC_Aero_Simulink2016a/Uncertain Plant/W_I'
- * '<S13>'  : 'MLC_Aero_Simulink2016a/Uncertain Plant/W_I '
- * '<S14>'  : 'MLC_Aero_Simulink2016a/Uncertain Plant/Delta_1/Input Delay'
- * '<S15>'  : 'MLC_Aero_Simulink2016a/Uncertain Plant/Delta_1/Output Delay'
- * '<S16>'  : 'MLC_Aero_Simulink2016a/Uncertain Plant/Delta_2/Input Delay'
- * '<S17>'  : 'MLC_Aero_Simulink2016a/Uncertain Plant/Delta_2/Output Delay'
- * '<S18>'  : 'MLC_Aero_Simulink2016a/Uncertain Plant/Plant/Green'
- * '<S19>'  : 'MLC_Aero_Simulink2016a/Uncertain Plant/Plant/Pitch Bias Removal'
- * '<S20>'  : 'MLC_Aero_Simulink2016a/Uncertain Plant/Plant/Yellow'
- * '<S21>'  : 'MLC_Aero_Simulink2016a/Uncertain Plant/Plant/Pitch Bias Removal/Enabled Moving Average'
- * '<S22>'  : 'MLC_Aero_Simulink2016a/Uncertain Plant/Plant/Pitch Bias Removal/Switch Case Action Subsystem'
- * '<S23>'  : 'MLC_Aero_Simulink2016a/Uncertain Plant/Plant/Pitch Bias Removal/Switch Case Action Subsystem1'
- * '<S24>'  : 'MLC_Aero_Simulink2016a/Uncertain Plant/Plant/Pitch Bias Removal/Switch Case Action Subsystem2'
- * '<S25>'  : 'MLC_Aero_Simulink2016a/Uncertain Plant/Plant/Pitch Bias Removal/Enabled Moving Average/Increment'
- * '<S26>'  : 'MLC_Aero_Simulink2016a/Uncertain Plant/W_I/Input Delay'
- * '<S27>'  : 'MLC_Aero_Simulink2016a/Uncertain Plant/W_I/Output Delay'
- * '<S28>'  : 'MLC_Aero_Simulink2016a/Uncertain Plant/W_I /Input Delay'
- * '<S29>'  : 'MLC_Aero_Simulink2016a/Uncertain Plant/W_I /Output Delay'
+ * '<S3>'   : 'MLC_Aero_Simulink2016a/Controller/Input Delay'
+ * '<S4>'   : 'MLC_Aero_Simulink2016a/Controller/Output Delay'
+ * '<S5>'   : 'MLC_Aero_Simulink2016a/Uncertain Plant/Delta_1'
+ * '<S6>'   : 'MLC_Aero_Simulink2016a/Uncertain Plant/Delta_2'
+ * '<S7>'   : 'MLC_Aero_Simulink2016a/Uncertain Plant/Plant'
+ * '<S8>'   : 'MLC_Aero_Simulink2016a/Uncertain Plant/W_I'
+ * '<S9>'   : 'MLC_Aero_Simulink2016a/Uncertain Plant/W_I '
+ * '<S10>'  : 'MLC_Aero_Simulink2016a/Uncertain Plant/Delta_1/Input Delay'
+ * '<S11>'  : 'MLC_Aero_Simulink2016a/Uncertain Plant/Delta_1/Output Delay'
+ * '<S12>'  : 'MLC_Aero_Simulink2016a/Uncertain Plant/Delta_2/Input Delay'
+ * '<S13>'  : 'MLC_Aero_Simulink2016a/Uncertain Plant/Delta_2/Output Delay'
+ * '<S14>'  : 'MLC_Aero_Simulink2016a/Uncertain Plant/Plant/Green'
+ * '<S15>'  : 'MLC_Aero_Simulink2016a/Uncertain Plant/Plant/Pitch Bias Removal'
+ * '<S16>'  : 'MLC_Aero_Simulink2016a/Uncertain Plant/Plant/Yellow'
+ * '<S17>'  : 'MLC_Aero_Simulink2016a/Uncertain Plant/Plant/Pitch Bias Removal/Enabled Moving Average'
+ * '<S18>'  : 'MLC_Aero_Simulink2016a/Uncertain Plant/Plant/Pitch Bias Removal/Switch Case Action Subsystem'
+ * '<S19>'  : 'MLC_Aero_Simulink2016a/Uncertain Plant/Plant/Pitch Bias Removal/Switch Case Action Subsystem1'
+ * '<S20>'  : 'MLC_Aero_Simulink2016a/Uncertain Plant/Plant/Pitch Bias Removal/Switch Case Action Subsystem2'
+ * '<S21>'  : 'MLC_Aero_Simulink2016a/Uncertain Plant/Plant/Pitch Bias Removal/Enabled Moving Average/Increment'
+ * '<S22>'  : 'MLC_Aero_Simulink2016a/Uncertain Plant/W_I/Input Delay'
+ * '<S23>'  : 'MLC_Aero_Simulink2016a/Uncertain Plant/W_I/Output Delay'
+ * '<S24>'  : 'MLC_Aero_Simulink2016a/Uncertain Plant/W_I /Input Delay'
+ * '<S25>'  : 'MLC_Aero_Simulink2016a/Uncertain Plant/W_I /Output Delay'
  */
 #endif                                 /* RTW_HEADER_MLC_Aero_Simulink2016a_h_ */
