@@ -1,0 +1,2 @@
+#include <winuser.rh>
+1 RT_MANIFEST "MLC_Aero_Simulink2016a.auto.manifest"

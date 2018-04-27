@@ -7,9 +7,9 @@
  *
  * Code generation for model "MLC_Aero_Simulink2016a".
  *
- * Model version              : 1.110
+ * Model version              : 1.113
  * Simulink Coder version : 8.10 (R2016a) 10-Feb-2016
- * C source code generated on : Thu Apr 26 23:56:33 2018
+ * C source code generated on : Fri Apr 27 16:19:04 2018
  *
  * Target selection: quarc_win64.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -814,14 +814,14 @@
 
 /* Block signals (auto storage) */
 typedef struct {
-  real_T Internal[2];                  /* '<S1>/Internal' */
-  real_T MotorEnable[2];               /* '<S7>/Motor Enable' */
-  real_T Countstorads[2];              /* '<S7>/Counts to rads' */
-  real_T Sum;                          /* '<S7>/Sum' */
-  real_T TmpSignalConversionAtToWorkspac[2];
   real_T PitchReference;               /* '<Root>/Pitch Reference ' */
   real_T YawReference;                 /* '<Root>/Yaw Reference' */
+  real_T Countstorads[2];              /* '<S7>/Counts to rads' */
+  real_T Sum;                          /* '<S7>/Sum' */
   real_T Sum_a[2];                     /* '<Root>/Sum' */
+  real_T Internal[2];                  /* '<S1>/Internal' */
+  real_T MotorEnable[2];               /* '<S7>/Motor Enable' */
+  real_T TmpSignalConversionAtToWorkspac[2];
   real_T Stepend_time;                 /* '<S15>/Step: end_time' */
   real_T Count;                        /* '<S21>/Count' */
   real_T Sum_b;                        /* '<S17>/Sum' */
@@ -886,17 +886,17 @@ typedef struct {
 
 /* Continuous states (auto storage) */
 typedef struct {
-  real_T Internal_CSTATE[6];           /* '<S1>/Internal' */
+  real_T Internal_CSTATE[8];           /* '<S1>/Internal' */
 } X_MLC_Aero_Simulink2016a_T;
 
 /* State derivatives (auto storage) */
 typedef struct {
-  real_T Internal_CSTATE[6];           /* '<S1>/Internal' */
+  real_T Internal_CSTATE[8];           /* '<S1>/Internal' */
 } XDot_MLC_Aero_Simulink2016a_T;
 
 /* State disabled  */
 typedef struct {
-  boolean_T Internal_CSTATE[6];        /* '<S1>/Internal' */
+  boolean_T Internal_CSTATE[8];        /* '<S1>/Internal' */
 } XDis_MLC_Aero_Simulink2016a_T;
 
 #ifndef ODE1_INTG
@@ -1042,27 +1042,6 @@ struct P_MLC_Aero_Simulink2016a_T_ {
   real_T HILInitialize_OOWatchdog[3];  /* Expression: watchdog_other_outputs
                                         * Referenced by: '<S7>/HIL Initialize'
                                         */
-  real_T Internal_A[20];               /* Computed Parameter: Internal_A
-                                        * Referenced by: '<S1>/Internal'
-                                        */
-  real_T Internal_B[2];                /* Computed Parameter: Internal_B
-                                        * Referenced by: '<S1>/Internal'
-                                        */
-  real_T Internal_C[12];               /* Computed Parameter: Internal_C
-                                        * Referenced by: '<S1>/Internal'
-                                        */
-  real_T NoControl_Value[2];           /* Expression: [0 0]
-                                        * Referenced by: '<S7>/No Control'
-                                        */
-  real_T MotorEnable_Threshold;        /* Expression: 0
-                                        * Referenced by: '<S7>/Motor Enable'
-                                        */
-  real_T LEDColour_Threshold;          /* Expression: 0
-                                        * Referenced by: '<S7>/LED Colour'
-                                        */
-  real_T Countstorads_Gain[2];         /* Expression: [2*pi/2048 2*pi/4096]
-                                        * Referenced by: '<S7>/Counts to rads'
-                                        */
   real_T PitchReference_Amplitude;     /* Expression: pi/6
                                         * Referenced by: '<Root>/Pitch Reference '
                                         */
@@ -1074,6 +1053,30 @@ struct P_MLC_Aero_Simulink2016a_T_ {
                                         */
   real_T YawReference_Frequency;       /* Computed Parameter: YawReference_Frequency
                                         * Referenced by: '<Root>/Yaw Reference'
+                                        */
+  real_T Countstorads_Gain[2];         /* Expression: [2*pi/2048 2*pi/4096]
+                                        * Referenced by: '<S7>/Counts to rads'
+                                        */
+  real_T Internal_A[50];               /* Computed Parameter: Internal_A
+                                        * Referenced by: '<S1>/Internal'
+                                        */
+  real_T Internal_B[14];               /* Computed Parameter: Internal_B
+                                        * Referenced by: '<S1>/Internal'
+                                        */
+  real_T Internal_C[16];               /* Computed Parameter: Internal_C
+                                        * Referenced by: '<S1>/Internal'
+                                        */
+  real_T Internal_D[4];                /* Computed Parameter: Internal_D
+                                        * Referenced by: '<S1>/Internal'
+                                        */
+  real_T NoControl_Value[2];           /* Expression: [0 0]
+                                        * Referenced by: '<S7>/No Control'
+                                        */
+  real_T MotorEnable_Threshold;        /* Expression: 0
+                                        * Referenced by: '<S7>/Motor Enable'
+                                        */
+  real_T LEDColour_Threshold;          /* Expression: 0
+                                        * Referenced by: '<S7>/LED Colour'
                                         */
   int32_T HILInitialize_CKChannels;    /* Computed Parameter: HILInitialize_CKChannels
                                         * Referenced by: '<S7>/HIL Initialize'
@@ -1251,7 +1254,7 @@ struct tag_RTM_MLC_Aero_Simulink2016_T {
     boolean_T zCCacheNeedsReset;
     boolean_T derivCacheNeedsReset;
     boolean_T blkStateChange;
-    real_T odeF[1][6];
+    real_T odeF[1][8];
     ODE1_IntgData intgData;
     void *dwork;
   } ModelData;
