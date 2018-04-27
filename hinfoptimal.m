@@ -1,4 +1,4 @@
-epreliminaries
+preliminaries
 %% Hinf Optimal
 %Wt = info.W1; %Not sure what sensitivity weight should be
 Wu = 1/25*eye(2); %control weight
@@ -21,6 +21,7 @@ while(w_max-w_min > tol)
     end
     w_try = (w_max + w_min)/2;
 end
+w_try
 K=Kinf
 %Check RP + RS
 Sinf = eye(2)-feedback(G_unc*Kinf,eye(2));
