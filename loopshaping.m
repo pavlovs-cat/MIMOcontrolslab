@@ -1,7 +1,7 @@
 preliminaries % load uncertain plant
 %% Loop Shaping
 s = tf('s');
-wc = 1;
+wc = 10;
 Ld = eye(2)*(wc/s); %desired loopshape
 A_nom=A.NominalValue
 B_nom=B.NominalValue

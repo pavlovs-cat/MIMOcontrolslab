@@ -13,10 +13,10 @@ Gpert = G_nom*(eye(2)+InputUnc*info.W1);
 
 systemnames = 'Gpert Wu Wp';
 inputvar = '[r{2};u{2}]';
-outputvar = '[Wp;Wu;-r-Gpert]';
+outputvar = '[Wp;Wu;r-Gpert]';
 input_to_Gpert = '[u]';
 input_to_Wu = '[u]';
-input_to_Wp = '[r+Gpert]';
+input_to_Wp = '[rGpert]';
 cleanupsysic = 'yes';  
 P = sysic;
 

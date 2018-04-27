@@ -1,4 +1,4 @@
-preliminaries
+epreliminaries
 %% Hinf Optimal
 %Wt = info.W1; %Not sure what sensitivity weight should be
 Wu = 1/25*eye(2); %control weight
