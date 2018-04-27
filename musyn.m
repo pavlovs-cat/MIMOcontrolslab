@@ -1,6 +1,5 @@
 preliminaries %run only first time
 
-wc = 5; % tune this
 
 %% Mu syn
 wc = 5;
@@ -30,8 +29,9 @@ P = sysic;
 % P = sysic;
 % P = [Wp; Wu ]*[eye(2) Gpert]; 
 [k,clp,bnd] = dksyn(P,2,2); 
-K=balred(k,6)
+K=minreal(balred(k,6)*(s/4785.4+1)/(s/200+1));
 
+%%
 Smu = inv(eye(2)+G_unc*K);
 bodemag(Smu.NominalValue);
 
@@ -40,12 +40,14 @@ bnd = robuststab(Smu);
 muRS = 1/bnd.LowerBound % mu < 1 needed for RS
 
 
-
+%%
 D1=ultidyn('D1',[1 1]);
 D2=ultidyn('D2',[1 1]);
+Delta_1=usample(D1,1);
+Delta_2=usample(D2,1);
+%%
 Delta_1a=usample(D1,10);
 Delta_2a=usample(D2,10);
-
 figure()
 
 for i=1:10
