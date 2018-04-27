@@ -57,21 +57,21 @@ xlabel('time(s)')
 ylabel('Angles(rad)')
 title('Pitch(red) and Yaw(blue) Responses for Hinf Loopshaping')
 
-
+%%
 figure()
 
 for i=1:10
     Delta_1=Delta_1a(:,:,i,1)
     Delta_2=Delta_2a(:,:,i,1)
     simout=sim('prelim_plant')
-    time=motor_.Time(:,1)
-    pitch=angles.Data(:,1)
-    yaw=angles.Data(:,2)
+    time=mv.Time(:,1)
+    pitch=mv.Data(:,1)
+    yaw=mv.Data(:,2)
     plot(time,pitch,'r')
     hold on
     plot(time,yaw,'b')
 end
 xlabel('time(s)')
 ylabel('Volts(V)')
-title('Pitch(red) and Yaw(blue) Responses for Hinf Loopshaping')
+title('Pitch(red) and Yaw(blue) Control Voltages for Hinf Loopshaping')
 
