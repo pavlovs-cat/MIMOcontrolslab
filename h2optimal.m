@@ -1,13 +1,13 @@
 %Solves the H2 optimal control problem for the Quanser Aero, neglecting
 %uncertainty
 preliminaries
-<<<<<<< HEAD
+
 G = G_nom;
 J_body
-=======
+
 %% Lets not run preliminaries every time :)
 G = G_nom;J_body
-wc = 5; %crossover frequency needed for performance weight
+wc = 10; %crossover frequency needed for performance weight
 Wu = 1/25*eye(2); %control weight
 Wp = makeweight(100, wc, 1/3)*eye(2); %performance weight
 %not sure what sensitivity weight should be

@@ -1,11 +1,11 @@
-%preliminaries % load uncertain plant
+preliminaries % load uncertain plant
 %% Loop Shaping
 s = tf('s');
-wc = 1;
+wc = 5;
 Ld = eye(2)*(wc/s); %desired loopshape
 A_nom=A.NominalValue
 B_nom=B.NominalValue
-K=1/(s/1000+1)^2*inv(G_nom)*(Ld)/10000000;
+K=0.5*1/((s/30+1)^2)*inv(G_nom)*(Ld);
 L=G_nom*K;
 
 
@@ -16,6 +16,7 @@ D2=ultidyn('D2',[1 1]);
 Delta_1a=usample(D1,10);
 Delta_2a=usample(D2,10);
 %ncfsyn gkinverse
+
 %%
 % figure()
 % 
@@ -33,3 +34,22 @@ Delta_2a=usample(D2,10);
 % xlabel('time(s)')
 % ylabel('Angles(rad)')
 % title('Pitch(red) and Yaw(blue) Responses for Inverse Loopshaping')
+% Delta_1=Delta_1a(:,:,1,1)
+% Delta_2=Delta_2a(:,:,1,1)
+%%
+figure()
+for i=1:10
+    Delta_1=Delta_1a(:,:,i,1)
+    Delta_2=Delta_2a(:,:,i,1)
+    simout=sim('prelim_plant')
+    time=angles.Time(:,1)
+    pitch=angles.Data(:,1)
+    yaw=angles.Data(:,2)
+    plot(time,pitch,'r')
+    hold on
+    plot(time,yaw,'b')
+end
+xlabel('time(s)')
+ylabel('Angles(rad)')
+title('Pitch(red) and Yaw(blue) Responses')
+
