@@ -16,9 +16,11 @@ P = augw(G, Wp, Wu, []);
 [K,CL,GAM] = h2syn(P, 2, 2)
 D1=ultidyn('D1',[1 1]);
 D2=ultidyn('D2',[1 1]);
-Delta_1=usample(D1);
-Delta_2=usample(D2);
+Delta_1a=usample(D1);
+Delta_2a=usample(D2);
 
+Delta_1=Delta_1a(:,:,1,1)
+Delta_2=Delta_2a(:,:,1,1)
 %% Plotting
 bodemag(K)
 

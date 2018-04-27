@@ -7,9 +7,9 @@
  *
  * Code generation for model "MLC_Aero_Simulink2016a".
  *
- * Model version              : 1.102
+ * Model version              : 1.110
  * Simulink Coder version : 8.10 (R2016a) 10-Feb-2016
- * C source code generated on : Tue Apr 24 12:20:47 2018
+ * C source code generated on : Thu Apr 26 23:56:33 2018
  *
  * Target selection: quarc_win64.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -62,7 +62,7 @@ static const char_T * rtDataTypeNames[] = {
 
 /* data type transitions for block I/O structure */
 static DataTypeTransition rtBTransitions[] = {
-  { (char_T *)(&MLC_Aero_Simulink2016a_B.PitchReference), 0, 0, 17 }
+  { (char_T *)(&MLC_Aero_Simulink2016a_B.Internal[0]), 0, 0, 17 }
   ,
 
   { (char_T *)(&MLC_Aero_Simulink2016a_DW.UnitDelay_DSTATE), 0, 0, 16 },
@@ -71,7 +71,7 @@ static DataTypeTransition rtBTransitions[] = {
 
   { (char_T *)(&MLC_Aero_Simulink2016a_DW.HILReadTimebase_Task), 15, 0, 1 },
 
-  { (char_T *)(&MLC_Aero_Simulink2016a_DW.HILWrite_PWORK), 11, 0, 7 },
+  { (char_T *)(&MLC_Aero_Simulink2016a_DW.HILWrite_PWORK), 11, 0, 9 },
 
   { (char_T *)(&MLC_Aero_Simulink2016a_DW.HILInitialize_ClockModes), 6, 0, 15 },
 
@@ -96,7 +96,7 @@ static DataTypeTransition rtPTransitions[] = {
   { (char_T *)(&MLC_Aero_Simulink2016a_P.HILReadTimebase_analog_channels[0]), 7,
     0, 14 },
 
-  { (char_T *)(&MLC_Aero_Simulink2016a_P.u4V_UpperSat), 0, 0, 171 },
+  { (char_T *)(&MLC_Aero_Simulink2016a_P.u4V_UpperSat), 0, 0, 77 },
 
   { (char_T *)(&MLC_Aero_Simulink2016a_P.HILInitialize_CKChannels), 6, 0, 4 },
 
