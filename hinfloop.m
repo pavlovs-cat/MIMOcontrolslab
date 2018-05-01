@@ -1,17 +1,9 @@
 preliminaries
-%%
-% use conventional loopshaping to get initial value for K
+
 s = tf('s');
 wc = 3;
 Ld = eye(2)*(wc/s); %desired loopshape
 K_l=minreal((1/(s/10+1))^2*(Ld));
-
-%Use Hinf loopshaping to add RS
-%L=minreal(10*(1/(s/100+1))^2*(Ld))
-% L=minreal(10*s*(1/(s/1000+1))^2*(Ld))
-
-%Use Hinf loopshaping to add RS
-
 
 
 [Ki,cl,gam,info] =ncfsyn(G_unc,inv(G_nom),K_l);
@@ -32,6 +24,11 @@ bodemag(S,inv(Wp))
 
 %Check robust performance
 [perfmarg,wcu,report,info] = robustperf(S)
+%%
+CL=feedback(G_unc*K,eye(2))
+stabmarg=robstab(CL)
+mu=1/stabmarg.LowerBound
+perfmargin=robustperf(CL)
 %%
 %Generate deltas
 D1=ultidyn('D1',[1 1]);

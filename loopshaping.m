@@ -18,24 +18,24 @@ Delta_2a=usample(D2,10);
 %ncfsyn gkinverse
 
 %%
-% figure()
-% 
-% for i=1:10
-%     Delta_1=Delta_1a(:,:,i,1)
-%     Delta_2=Delta_2a(:,:,i,1)
-%     simout=sim('prelim_plant')
-%     time=angles.Time(:,1)
-%     pitch=angles.Data(:,1)
-%     yaw=angles.Data(:,2)
-%     plot(time,pitch,'r')
-%     hold on
-%     plot(time,yaw,'b')
-% end
-% xlabel('time(s)')
-% ylabel('Angles(rad)')
-% title('Pitch(red) and Yaw(blue) Responses for Inverse Loopshaping')
-% Delta_1=Delta_1a(:,:,1,1)
-% Delta_2=Delta_2a(:,:,1,1)
+figure()
+
+for i=1:10
+    Delta_1=Delta_1a(:,:,i,1)
+    Delta_2=Delta_2a(:,:,i,1)
+    simout=sim('prelim_plant')
+    time=angles.Time(:,1)
+    pitch=angles.Data(:,1)
+    yaw=angles.Data(:,2)
+    plot(time,pitch,'r')
+    hold on
+    plot(time,yaw,'b')
+end
+xlabel('time(s)')
+ylabel('Angles(rad)')
+title('Pitch(red) and Yaw(blue) Responses for Inverse Loopshaping')
+Delta_1=Delta_1a(:,:,1,1)
+Delta_2=Delta_2a(:,:,1,1)
 %%
 figure()
 for i=1:10

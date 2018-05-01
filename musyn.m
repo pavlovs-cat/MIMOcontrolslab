@@ -22,13 +22,6 @@ P = sysic;
 [k,clp,bnd] = dksyn(P,2,2); 
 K=minreal(balred(k,6)*(s/4785.4+1)/(s/200+1));
 
-%%
-Smu = inv(eye(2)+G_unc*K);
-bodemag(Smu.NominalValue);
-
-mubnd % mu < 1 needed for RP
-bnd = robuststab(Smu);
-muRS = 1/bnd.LowerBound % mu < 1 needed for RS
 
 
 %%
