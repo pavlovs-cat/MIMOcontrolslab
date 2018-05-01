@@ -10,8 +10,7 @@ G = G_nom;J_body
 wc = 10; %crossover frequency needed for performance weight
 Wu = 1/25*eye(2); %control weight
 Wp = makeweight(100, wc, 1/3)*eye(2); %performance weight
-%not sure what sensitivity weight should be
-%Wt = Wt/(s+1000)*eye(2); %add a HF pole to allow h2syn to solve
+
 P = augw(G, Wp, Wu, []);
 [K,CL,GAM] = h2syn(P, 2, 2)
 D1=ultidyn('D1',[1 1]);
@@ -24,9 +23,17 @@ Delta_2=Delta_2a(:,:,1,1)
 %% Plotting
 bodemag(K)
 
+CL=feedback(G_unc*K,eye(2))
+stabmarg=robstab(CL)
+mu=1/stabmarg.LowerBound
+perfmargin=robustperf(CL)
+%% Another Way to check
+[STABMARG,DESTABUNC,REPORT,INFO] = robuststab(Sunc2);   %NOTE:  This DID NOT work with robstab!!!
+mu2 = 1/STABMARG.LowerBound
 
-%Check RP + RS
+% %Check RP + RS
 S2 = eye(2)-feedback(G_unc*K,eye(2));
 bodemag(S2,inv(Wp))
 [STABMARG,DESTABUNC,REPORT,INFO] = robuststab(S2)
+
 

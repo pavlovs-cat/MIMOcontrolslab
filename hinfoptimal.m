@@ -27,6 +27,11 @@ K=Kinf
 Sinf = eye(2)-feedback(G_unc*Kinf,eye(2));
 bodemag(Sinf,inv(Wp))
 [STABMARG,DESTABUNC,REPORT,INFO] = robuststab(Sinf)
+%% RS +RP
+CL=feedback(G_unc*K,eye(2))
+stabmarg=robstab(CL)
+mu=1/stabmarg.LowerBound
+perfmargin=robustperf(CL)
 %%
 D1=ultidyn('D1',[1 1]);
 D2=ultidyn('D2',[1 1]);
